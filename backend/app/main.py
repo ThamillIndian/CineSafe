@@ -98,11 +98,10 @@ async def root():
 
 # ============== INCLUDE ROUTERS ==============
 # Import all v1 API routers
-from app.api.v1 import projects, uploads, runs, results, whatif, reports
+from app.api.v1 import uploads, runs, results, whatif, reports
 
-# Include routers with proper prefixes
-app.include_router(projects.router, prefix="/api/v1/projects", tags=["Projects"])
-app.include_router(uploads.router, prefix="/api/v1/projects", tags=["Uploads"])
+# Include routers with proper prefixes (NO PROJECTS - direct upload to run)
+app.include_router(uploads.router, prefix="/api/v1/scripts", tags=["Scripts"])
 app.include_router(runs.router, prefix="/api/v1/runs", tags=["Runs"])
 app.include_router(results.router, prefix="/api/v1/results", tags=["Results"])
 app.include_router(whatif.router, prefix="/api/v1/whatif", tags=["What-If"])

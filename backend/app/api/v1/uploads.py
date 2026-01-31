@@ -1,25 +1,23 @@
 """
-File Upload API Router - Handle PDF/DOCX script uploads
+File Upload API Router - Direct script upload (no project needed)
 """
-from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, status
+from fastapi import APIRouter, UploadFile, File, HTTPException, status, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 import logging
 import uuid
-import os
 from pathlib import Path
 import pdfplumber
 from docx import Document as DocxDocument
 
 from app.database import get_db
-from app.models.database import Project, Document
+from app.models.database import Document
 from app.models.schemas import UploadResponse
 from app.config import settings
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
 
-# Ensure upload directory exists
 UPLOAD_DIR = Path(settings.storage_path) / "uploads"
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -42,56 +40,31 @@ def extract_text_from_docx(file_path: str) -> tuple[str, int]:
     try:
         doc = DocxDocument(file_path)
         text = "\n".join([para.text for para in doc.paragraphs])
-        
-        # Estimate pages based on content length (roughly 3000 chars per page)
-        # This is more accurate than counting paragraphs
         estimated_pages = max(1, len(text) // 3000)
-        
         return text, estimated_pages
     except Exception as e:
         logger.error(f"DOCX extraction error: {e}")
         raise
 
 
-async def validate_project_exists(project_id: str, session: AsyncSession) -> Project:
-    """Validate that project exists"""
-    result = await session.execute(
-        select(Project).where(Project.id == project_id)
-    )
-    project = result.scalars().first()
-    
-    if not project:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Project {project_id} not found"
-        )
-    
-    return project
-
-
-# ============== UPLOAD SCRIPT ==============
-@router.post("/{project_id}/upload", response_model=UploadResponse)
+# ============== UPLOAD SCRIPT (NO PROJECT NEEDED) ==============
+@router.post("/upload", response_model=UploadResponse)
 async def upload_script(
-    project_id: str,
     file: UploadFile = File(...),
     session: AsyncSession = Depends(get_db)
 ):
     """
-    Upload a film script (PDF or DOCX)
+    Upload a film script directly (PDF or DOCX)
+    No project creation needed - ready to analyze immediately!
     
     **Args:**
-    - project_id: UUID of the project
     - file: Script file (PDF or DOCX)
     
-    **Returns:** Upload details with document ID
-    
-    **Supported formats:** .pdf, .docx
+    **Returns:** Document ID + upload details
+    **Supported:** .pdf, .docx
     **Max size:** 100 MB
     """
     try:
-        # Validate project exists
-        await validate_project_exists(project_id, session)
-        
         # Validate file format
         file_ext = Path(file.filename).suffix.lower()
         if file_ext not in ['.pdf', '.docx']:
@@ -107,7 +80,7 @@ async def upload_script(
         if file_size_mb > settings.upload_max_size_mb:
             raise HTTPException(
                 status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,
-                detail=f"File size {file_size_mb:.2f}MB exceeds limit of {settings.upload_max_size_mb}MB"
+                detail=f"File exceeds limit of {settings.upload_max_size_mb}MB"
             )
         
         # Save file
@@ -122,14 +95,13 @@ async def upload_script(
         if file_ext == '.pdf':
             text_content, page_count = extract_text_from_pdf(str(file_path))
             file_format = "pdf"
-        else:  # .docx
+        else:
             text_content, page_count = extract_text_from_docx(str(file_path))
             file_format = "docx"
         
         # Store in database
         document = Document(
             id=document_id,
-            project_id=project_id,
             filename=file.filename,
             file_path=str(file_path),
             format=file_format,
@@ -162,124 +134,18 @@ async def upload_script(
         )
 
 
-# ============== GET UPLOADED SCRIPT ==============
-@router.get("/{project_id}/script/{document_id}")
+# ============== GET SCRIPT ==============
+@router.get("/{document_id}")
 async def get_script(
-    project_id: str,
     document_id: str,
     session: AsyncSession = Depends(get_db)
 ):
     """
-    Get uploaded script details and content
-    
-    **Args:**
-    - project_id: UUID of the project
-    - document_id: UUID of the document
-    
-    **Returns:** Document details with text content
+    Get uploaded script details
     """
     try:
         result = await session.execute(
-            select(Document).where(
-                (Document.id == document_id) & 
-                (Document.project_id == project_id)
-            )
-        )
-        document = result.scalars().first()
-        
-        if not document:
-            raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
-                detail=f"Document {document_id} not found in project {project_id}"
-            )
-        
-        return {
-            "id": document.id,
-            "filename": document.filename,
-            "format": document.format,
-            "page_count": document.page_count,
-            "uploaded_at": document.uploaded_at,
-            "text_content": document.text_content[:5000],  # First 5000 chars preview
-            "text_length": len(document.text_content)
-        }
-        
-    except HTTPException:
-        raise
-    except Exception as e:
-        logger.error(f"❌ Error fetching script: {e}")
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Error fetching script: {str(e)}"
-        )
-
-
-# ============== LIST PROJECT DOCUMENTS ==============
-@router.get("/{project_id}/documents")
-async def list_project_documents(
-    project_id: str,
-    session: AsyncSession = Depends(get_db)
-):
-    """
-    List all uploaded documents for a project
-    
-    **Args:**
-    - project_id: UUID of the project
-    
-    **Returns:** List of documents
-    """
-    try:
-        # Validate project exists
-        await validate_project_exists(project_id, session)
-        
-        result = await session.execute(
-            select(Document).where(Document.project_id == project_id)
-        )
-        documents = result.scalars().all()
-        
-        return [
-            {
-                "id": doc.id,
-                "filename": doc.filename,
-                "format": doc.format,
-                "page_count": doc.page_count,
-                "uploaded_at": doc.uploaded_at,
-                "text_length": len(doc.text_content) if doc.text_content else 0
-            }
-            for doc in documents
-        ]
-        
-    except HTTPException:
-        raise
-    except Exception as e:
-        logger.error(f"❌ Error listing documents: {e}")
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Error listing documents: {str(e)}"
-        )
-
-
-# ============== DELETE DOCUMENT ==============
-@router.delete("/{project_id}/documents/{document_id}", status_code=status.HTTP_204_NO_CONTENT)
-async def delete_document(
-    project_id: str,
-    document_id: str,
-    session: AsyncSession = Depends(get_db)
-):
-    """
-    Delete an uploaded document
-    
-    **Args:**
-    - project_id: UUID of the project
-    - document_id: UUID of the document
-    
-    **Returns:** 204 No Content
-    """
-    try:
-        result = await session.execute(
-            select(Document).where(
-                (Document.id == document_id) & 
-                (Document.project_id == project_id)
-            )
+            select(Document).where(Document.id == document_id)
         )
         document = result.scalars().first()
         
@@ -289,7 +155,47 @@ async def delete_document(
                 detail=f"Document {document_id} not found"
             )
         
-        # Delete file from storage
+        return {
+            "id": document.id,
+            "filename": document.filename,
+            "format": document.format,
+            "page_count": document.page_count,
+            "uploaded_at": document.uploaded_at,
+            "text_length": len(document.text_content) if document.text_content else 0
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"❌ Error fetching script: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Error: {str(e)}"
+        )
+
+
+# ============== DELETE SCRIPT ==============
+@router.delete("/{document_id}", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_script(
+    document_id: str,
+    session: AsyncSession = Depends(get_db)
+):
+    """
+    Delete an uploaded script
+    """
+    try:
+        result = await session.execute(
+            select(Document).where(Document.id == document_id)
+        )
+        document = result.scalars().first()
+        
+        if not document:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=f"Document {document_id} not found"
+            )
+        
+        # Delete file
         try:
             Path(document.file_path).unlink()
         except:
@@ -308,5 +214,5 @@ async def delete_document(
         logger.error(f"❌ Delete failed: {e}")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Failed to delete document: {str(e)}"
+            detail=f"Failed to delete: {str(e)}"
         )

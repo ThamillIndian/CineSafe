@@ -53,9 +53,7 @@ class Project(Base):
     updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
     
     # Relationships
-    documents = relationship("Document", back_populates="project")
-    runs = relationship("Run", back_populates="project")
-    cross_scene_insights = relationship("CrossSceneInsight", back_populates="project")
+    # NOTE: runs and cross_scene_insights removed (no longer use project_id)
     decisions = relationship("Decision", back_populates="project")
     assumptions = relationship("Assumption", back_populates="project")
     reports = relationship("Report", back_populates="project")
@@ -66,7 +64,6 @@ class Document(Base):
     __tablename__ = "documents"
     
     id = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
-    project_id = Column(String(36), ForeignKey("projects.id"), nullable=False)
     filename = Column(String(255), nullable=False)
     file_path = Column(String(500), nullable=False)
     format = Column(String(20), nullable=False)  # pdf, docx
@@ -75,11 +72,10 @@ class Document(Base):
     uploaded_at = Column(DateTime, server_default=func.now())
     
     # Relationships
-    project = relationship("Project", back_populates="documents")
     runs = relationship("Run", back_populates="document")
     
     __table_args__ = (
-        Index("idx_project_id", "project_id"),
+        Index("idx_document_id", "id"),
     )
 
 
@@ -88,16 +84,27 @@ class Run(Base):
     __tablename__ = "runs"
     
     id = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
-    project_id = Column(String(36), ForeignKey("projects.id"), nullable=False)
     document_id = Column(String(36), ForeignKey("documents.id"), nullable=False)
-    run_number = Column(Integer, nullable=False)
     status = Column(SQLEnum(RunStatus), default=RunStatus.QUEUED)
     started_at = Column(DateTime)
     completed_at = Column(DateTime)
     error_message = Column(Text)
+    enhanced_result_json = Column(JSON, nullable=True)  # Store complete enhanced output with grounding
+    
+    # ══════ NEW: Optimization Data ══════
+    location_clusters_json = Column(JSON, nullable=True)        # Location clustering results
+    stunt_relocations_json = Column(JSON, nullable=True)        # Stunt analysis & relocations
+    optimized_schedule_json = Column(JSON, nullable=True)       # Optimized shooting schedule
+    department_scaling_json = Column(JSON, nullable=True)       # Department cost scaling
+    
+    # Optimization Summary
+    optimized_budget_min = Column(Integer, nullable=True)       # Optimized budget (min)
+    optimized_budget_likely = Column(Integer, nullable=True)    # Optimized budget (likely)
+    optimized_budget_max = Column(Integer, nullable=True)       # Optimized budget (max)
+    total_optimization_savings = Column(Integer, nullable=True) # Total savings in rupees
+    schedule_savings_percent = Column(Float, nullable=True)     # Schedule compression %
     
     # Relationships
-    project = relationship("Project", back_populates="runs")
     document = relationship("Document", back_populates="runs")
     scenes = relationship("Scene", back_populates="run")
     cross_scene_insights = relationship("CrossSceneInsight", back_populates="run")
@@ -105,7 +112,7 @@ class Run(Base):
     jobs = relationship("Job", back_populates="run")
     
     __table_args__ = (
-        Index("idx_project_run", "project_id", "run_number"),
+        Index("idx_document_run", "document_id"),
     )
 
 
@@ -201,7 +208,6 @@ class CrossSceneInsight(Base):
     __tablename__ = "cross_scene_insights"
     
     id = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
-    project_id = Column(String(36), ForeignKey("projects.id"), nullable=False)
     run_id = Column(String(36), ForeignKey("runs.id"), nullable=False)
     insight_type = Column(SQLEnum(InsightType), nullable=False)
     scene_ids = Column(JSON, default=list)
@@ -214,7 +220,6 @@ class CrossSceneInsight(Base):
     generated_at = Column(DateTime, server_default=func.now())
     
     # Relationships
-    project = relationship("Project", back_populates="cross_scene_insights")
     run = relationship("Run", back_populates="cross_scene_insights")
 
 

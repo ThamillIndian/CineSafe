@@ -20,6 +20,7 @@ redis==5.0.1
 google-genai>=1.0.0
 tenacity==8.2.3
 sentence-transformers==2.2.2
+aiohttp>=3.8.0  # For Qwen3 local LM Studio
 
 # Document Processing
 pdfplumber==0.10.3

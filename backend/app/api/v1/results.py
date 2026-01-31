@@ -65,6 +65,13 @@ async def get_full_results(
     try:
         run = await get_run_or_404(run_id, session)
         
+        # ✅ FIRST: Return the enhanced result JSON if available (with full grounding!)
+        if run.enhanced_result_json:
+            enhanced_data = run.enhanced_result_json.copy()
+            enhanced_data["retrieved_at"] = datetime.utcnow().isoformat()
+            logger.info(f"✅ Returning enhanced results with knowledge grounding for run {run_id}")
+            return enhanced_data
+        
         # Get project summary if exists
         summary_result = await session.execute(
             select(ProjectSummary).where(ProjectSummary.run_id == run_id)

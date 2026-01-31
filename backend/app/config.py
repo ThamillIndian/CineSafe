@@ -20,10 +20,18 @@ class Settings(BaseSettings):
     api_port: int = 8000
     api_debug: bool = True
     
-    # LLM (Gemini)
+    # LLM Provider Selection (Qwen3 Local or Gemini API)
+    llm_provider: str = "qwen3"  # Options: "qwen3" (local) or "gemini" (API)
+    
+    # Gemini (Fallback)
     gemini_api_key: str = ""
     gemini_model: str = "gemini-3-flash-preview"
     gemini_request_delay: float = 1.2
+    
+    # Qwen3 VI 4B (Local via LM Studio)
+    qwen3_base_url: str = "http://localhost:1234/v1"
+    qwen3_model: str = "qwen3"
+    qwen3_api_key: str = "lm-studio"  # Dummy key for local use
     
     # RAG / Vector DB
     qdrant_url: str = "http://localhost:6333"

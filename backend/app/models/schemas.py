@@ -57,14 +57,20 @@ class RunStartRequest(BaseModel):
 
 class RunStatusResponse(BaseModel):
     """Schema for run status"""
-    job_id: str
     run_id: str
+    document_id: str
     status: str
-    current_step: str
-    progress_percent: int
-    current_scene: Optional[int]
-    total_scenes: Optional[int]
-    error_message: Optional[str]
+    started_at: Optional[datetime] = None
+    completed_at: Optional[datetime] = None
+    error: Optional[str] = None
+    
+    # Optional fields for complex workflows (not used in Option B)
+    job_id: Optional[str] = None
+    current_step: Optional[str] = None
+    progress_percent: Optional[int] = None
+    current_scene: Optional[int] = None
+    total_scenes: Optional[int] = None
+    error_message: Optional[str] = None
 
 
 # ============== SCENE EXTRACTION SCHEMAS ==============
@@ -198,3 +204,121 @@ class WhatIfResponse(BaseModel):
     new_state: Dict[str, Any]
     deltas: WhatIfDelta
     feasibility_changed: bool
+
+
+# ============== OPTIMIZATION SCHEMAS (NEW) ==============
+class LocationCluster(BaseModel):
+    """Location clustering for optimization"""
+    location_name: str
+    scene_numbers: List[Any]  # Can be int or str (e.g., "4.1")
+    scene_count: int
+    unoptimized_days: int
+    optimized_days: int
+    setup_overhead_original: int
+    setup_overhead_optimized: int
+    savings: int
+    efficiency_percent: float
+    recommendation: str
+
+
+class LocationOptimization(BaseModel):
+    """Location clustering results"""
+    location_clusters: List[LocationCluster]
+    total_location_savings: int
+    clusters_found: int
+    confidence: float
+
+
+class StuntRelocation(BaseModel):
+    """Stunt relocation recommendation"""
+    scene_number: Any
+    stunt_description: str
+    location_type: str  # PUBLIC, INTERIOR, OUTDOOR
+    current_location: str
+    public_location_costs: Dict[str, Any]
+    studio_alternative: Dict[str, Any]
+    recommendation: Dict[str, Any]  # action, savings, reasoning, etc.
+
+
+class StuntOptimization(BaseModel):
+    """Stunt relocation results"""
+    stunt_relocations: List[StuntRelocation]
+    total_stunt_savings: int
+    confidence: float
+
+
+class DailySchedule(BaseModel):
+    """Single day in optimized schedule"""
+    day: int
+    location: str
+    scenes: List[Any]
+    shot_type: str
+    setup_time_hours: float
+    shooting_time_hours: float
+    crew_efficiency: str
+    notes: Optional[str] = None
+
+
+class ScheduleOptimization(BaseModel):
+    """Optimized shooting schedule"""
+    total_shooting_days: int
+    total_setup_days: int
+    total_production_days: int
+    time_savings_percent: float
+    daily_breakdown: List[DailySchedule]
+
+
+class DepartmentScaling(BaseModel):
+    """Department cost scaling"""
+    department: str
+    scale_tier: str
+    unoptimized_cost: int
+    optimized_cost: int
+    savings: int
+    scaling_factor: float
+    recommendation: str
+
+
+class DepartmentOptimization(BaseModel):
+    """Department scaling results"""
+    departments: List[DepartmentScaling]
+    total_department_savings: int
+
+
+class ExecutiveSummary(BaseModel):
+    """Executive summary of all optimizations"""
+    original_budget_min: int
+    original_budget_likely: int
+    original_budget_max: int
+    optimized_budget_min: int
+    optimized_budget_likely: int
+    optimized_budget_max: int
+    total_savings: int
+    savings_percent: float
+    schedule_original_days: int
+    schedule_optimized_days: int
+    schedule_savings_percent: float
+    roi_statement: str
+
+
+class FullResultsResponse(BaseModel):
+    """Complete analysis results with optimization layers"""
+    run_id: str
+    total_scenes: int
+    
+    # Original analysis layers
+    scenes_analysis: Dict[str, Any]
+    risk_intelligence: Dict[str, Any]
+    budget_intelligence: Dict[str, Any]
+    cross_scene_intelligence: Dict[str, Any]
+    production_recommendations: Dict[str, Any]
+    
+    # NEW: Optimization layers
+    location_optimization: Optional[LocationOptimization] = None
+    stunt_optimization: Optional[StuntOptimization] = None
+    schedule_optimization: Optional[ScheduleOptimization] = None
+    department_optimization: Optional[DepartmentOptimization] = None
+    executive_summary: Optional[ExecutiveSummary] = None
+    
+    generated_at: datetime
+    retrieved_at: datetime

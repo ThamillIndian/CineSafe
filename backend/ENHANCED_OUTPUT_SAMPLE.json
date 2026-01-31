@@ -1,0 +1,423 @@
+{
+  "run_id": "demo-run-2026-001",
+  "project_id": "demo-project-001",
+  "status": "completed",
+  "analysis_metadata": {
+    "analysis_type": "Comprehensive Production Safety & Budget Analysis",
+    "methodology": "Multi-Agent AI Analysis with Knowledge Grounding",
+    "agents_involved": [
+      "SceneExtractor",
+      "RiskScorer",
+      "BudgetEstimator",
+      "CrossSceneAuditor",
+      "MitigationPlanner"
+    ],
+    "knowledge_sources": [
+      "location_library",
+      "rate_card",
+      "risk_weights",
+      "city_multipliers",
+      "complexity_multipliers"
+    ],
+    "grounding_enabled": true,
+    "rag_knowledge_base": "ShootSafe Production Safety Database",
+    "mcp_integration": "Active (5 tools registered)",
+    "llm_model": "Gemini 3 Flash (with agentic reasoning)"
+  },
+  "executive_summary": {
+    "summary": "This 8-scene production presents moderate production complexity with 2 high-risk sequences requiring specialized mitigation. Spread across 4 unique locations with estimated total budget of $502,664. Strategic scheduling and resource optimization can reduce overall risk by 28% and budget variance by 15%.",
+    "feasibility_score": 0.82,
+    "recommendation": "Feasible with recommended risk mitigation (focus on 2 high-risk scenes)",
+    "intelligence": "Analysis by CrewAI agents with knowledge grounding from industry production safety standards and 500+ film production datasets.",
+    "key_findings": [
+      "2 scenes exceed safe risk threshold - recommend specialized safety allocation",
+      "Budget concentration in 3 scenes (38% of total) - suggest phased shooting or budget reserves",
+      "4 unique locations suggest $20K+ logistics overhead - optimize with location clustering"
+    ],
+    "budget_feasibility": "Feasible with recommended contingency reserves",
+    "risk_profile": "Moderate production complexity",
+    "schedule_confidence": 0.82
+  },
+  "scenes_analysis": {
+    "total_scenes": 8,
+    "analysis_approach": "Scene-by-scene extraction with cross-scene intelligence",
+    "scenes": [
+      {
+        "scene_number": 1,
+        "location": {
+          "extracted_value": "INT. BANK VAULT - DAY",
+          "grounding": {
+            "matched_from": "location_library.csv",
+            "category": "Government_Building",
+            "permit_tier": 4,
+            "industry_complexity": "very_high",
+            "knowledge_reference": "Location requires security + bureaucracy (Ref: Production Safety Guide Section 4.2)",
+            "typical_cost_multiplier": 1.9,
+            "weather_risk": "none",
+            "confidence": 0.85
+          },
+          "confidence": 0.92
+        },
+        "time_of_day": {
+          "value": "DAY",
+          "confidence": 0.95,
+          "intelligence": "Determined from dialogue and lighting references"
+        },
+        "risk_analysis": {
+          "base_risk": 15,
+          "amplification_factors": {
+            "location_security": 1.15,
+            "environmental": 1.0,
+            "talent_load": 1.02
+          },
+          "final_risk": 55,
+          "risk_drivers": [
+            "stunt_level",
+            "location_complexity"
+          ],
+          "mitigation_strategies": [
+            "Allocate specialized safety supervisor",
+            "Enhanced logistics coordination required"
+          ],
+          "grounding": "Risk calculation follows AMPTP Production Safety Standards (Ref: PG-12)",
+          "confidence": 0.78
+        },
+        "budget_analysis": {
+          "cost_estimate": {
+            "min": 40665,
+            "likely": 58050,
+            "max": 87075
+          },
+          "line_items_with_grounding": [
+            {
+              "department": "Production",
+              "cost": 23220,
+              "reasoning": "Base rate for Government_Building location (from rate_card.csv)",
+              "multiplier_applied": 1.0,
+              "grounding": "Production costs follow industry standard (Ref: AMPTP Rate Card)"
+            },
+            {
+              "department": "Equipment",
+              "cost": 17415,
+              "reasoning": "Base rate for Government_Building location (from rate_card.csv)",
+              "multiplier_applied": 1.0,
+              "grounding": "Equipment costs follow industry standard (Ref: AMPTP Rate Card)"
+            },
+            {
+              "department": "Safety",
+              "cost": 11610,
+              "reasoning": "Base rate for Government_Building location (from rate_card.csv)",
+              "multiplier_applied": 1.2,
+              "grounding": "Safety costs follow industry standard (Ref: AMPTP Rate Card)"
+            },
+            {
+              "department": "Permits",
+              "cost": 5805,
+              "reasoning": "Base rate for Government_Building location (from rate_card.csv)",
+              "multiplier_applied": 1.0,
+              "grounding": "Permits costs follow industry standard (Ref: AMPTP Rate Card)"
+            }
+          ],
+          "volatility_drivers": [
+            "weather_dependency",
+            "permit_complexity"
+          ],
+          "intelligence": "Budget estimate incorporates permit costs and specialized crew requirements"
+        },
+        "extraction_details": {
+          "location": {
+            "value": "INT. BANK VAULT",
+            "confidence": 0.9
+          },
+          "time_of_day": {
+            "value": "DAY",
+            "confidence": 0.95
+          },
+          "stunt_level": {
+            "value": "low",
+            "confidence": 0.7
+          },
+          "talent_count": {
+            "value": 1,
+            "confidence": 0.6
+          },
+          "extras_count": {
+            "value": 12,
+            "confidence": 0.5
+          },
+          "water_complexity": {
+            "value": "none",
+            "confidence": 0.9
+          },
+          "vehicle_types": {
+            "value": [],
+            "confidence": 0.8
+          },
+          "permit_tier": {
+            "value": 1,
+            "confidence": 0.7
+          },
+          "weather_dependent": {
+            "value": false,
+            "confidence": 0.85
+          },
+          "crowd_size": {
+            "value": 0,
+            "confidence": 0.7
+          },
+          "animals": {
+            "value": false,
+            "confidence": 0.9
+          },
+          "hazards": {
+            "value": [],
+            "confidence": 0.8
+          }
+        },
+        "raw_text": "INT. BANK VAULT - DAY"
+      },
+      {
+        "scene_number": 2,
+        "location": {
+          "extracted_value": "EXT. STREET - NIGHT",
+          "grounding": {
+            "matched_from": "location_library.csv",
+            "category": "Public_Road",
+            "permit_tier": 3,
+            "industry_complexity": "high",
+            "knowledge_reference": "Location requires Traffic control + police permits (Ref: Production Safety Guide Section 4.2)",
+            "typical_cost_multiplier": 1.5,
+            "weather_risk": "medium",
+            "confidence": 0.85
+          },
+          "confidence": 0.88
+        },
+        "time_of_day": {
+          "value": "NIGHT",
+          "confidence": 0.92,
+          "intelligence": "Determined from dialogue and lighting references"
+        },
+        "risk_analysis": {
+          "base_risk": 12,
+          "amplification_factors": {
+            "location_security": 1.15,
+            "environmental": 1.0,
+            "talent_load": 1.02
+          },
+          "final_risk": 48,
+          "risk_drivers": [
+            "stunt_level",
+            "location_complexity"
+          ],
+          "mitigation_strategies": [
+            "Standard production procedures sufficient"
+          ],
+          "grounding": "Risk calculation follows AMPTP Production Safety Standards (Ref: PG-12)",
+          "confidence": 0.78
+        },
+        "budget_analysis": {
+          "cost_estimate": {
+            "min": 43750,
+            "likely": 62500,
+            "max": 93750
+          },
+          "line_items_with_grounding": [
+            {
+              "department": "Production",
+              "cost": 25000,
+              "reasoning": "Base rate for Public_Road location (from rate_card.csv)",
+              "multiplier_applied": 1.0,
+              "grounding": "Production costs follow industry standard (Ref: AMPTP Rate Card)"
+            },
+            {
+              "department": "Equipment",
+              "cost": 18750,
+              "reasoning": "Base rate for Public_Road location (from rate_card.csv)",
+              "multiplier_applied": 1.0,
+              "grounding": "Equipment costs follow industry standard (Ref: AMPTP Rate Card)"
+            },
+            {
+              "department": "Safety",
+              "cost": 12500,
+              "reasoning": "Base rate for Public_Road location (from rate_card.csv)",
+              "multiplier_applied": 1.2,
+              "grounding": "Safety costs follow industry standard (Ref: AMPTP Rate Card)"
+            },
+            {
+              "department": "Permits",
+              "cost": 6250,
+              "reasoning": "Base rate for Public_Road location (from rate_card.csv)",
+              "multiplier_applied": 1.0,
+              "grounding": "Permits costs follow industry standard (Ref: AMPTP Rate Card)"
+            }
+          ],
+          "volatility_drivers": [
+            "weather_dependency",
+            "permit_complexity"
+          ],
+          "intelligence": "Budget estimate incorporates permit costs and specialized crew requirements"
+        },
+        "extraction_details": {
+          "location": {
+            "value": "EXT. STREET",
+            "confidence": 0.88
+          }
+        },
+        "raw_text": "EXT. STREET - NIGHT"
+      }
+    ]
+  },
+  "risk_intelligence": {
+    "approach": "Multi-dimensional risk scoring with amplification factors",
+    "risk_summary": {
+      "average_safety_score": 23,
+      "highest_risk_scene": 62,
+      "risk_clusters": [
+        {
+          "scene_ids": [1, 4],
+          "cluster_type": "High-Risk Concentration",
+          "combined_risk": 117,
+          "intelligence": "These 2 scenes exceed safe risk threshold. Recommend spacing across production schedule or adding redundant safety systems.",
+          "mitigation": "Allocate experienced safety supervisor for entire cluster"
+        }
+      ],
+      "grounding": "Risk calculations align with AMPTP Production Safety Guidelines and 10+ years of production safety data"
+    },
+    "key_metrics": {
+      "high_risk_scenes_count": 2,
+      "medium_risk_scenes_count": 3,
+      "low_risk_scenes_count": 3
+    }
+  },
+  "budget_intelligence": {
+    "total_budget": {
+      "min": 346900,
+      "likely": 495571,
+      "max": 743357
+    },
+    "budget_concentration": {
+      "top_3_scenes": {
+        "scene_ids": [1, 2, 4],
+        "combined_budget": 185892,
+        "percentage_of_total": 38,
+        "intelligence": "Nearly 38% of budget concentrated in 3 scenes. High financial risk if issues arise.",
+        "recommendation": "Consider phased production schedule or budget contingency of 15% minimum"
+      }
+    },
+    "multiplier_analysis": {
+      "city_impact": "Standard multipliers applied (Mumbai baseline = 1.0)",
+      "complexity_impact": "Medium-high complexity raising costs by 1.2-1.3x",
+      "grounding": "Multipliers derived from 500+ production datasets and location_library.csv"
+    },
+    "financial_risk_score": 0.72
+  },
+  "cross_scene_intelligence": {
+    "agent": "CrossSceneAuditorAgent",
+    "analysis_depth": "Production-level optimization analysis",
+    "insights": [
+      {
+        "id": "csi-a8f4c2e1-9b3d-4e12-8c5f-7a2d9e1f3b4c",
+        "insight_type": "SAFETY_CLUSTER",
+        "scene_ids": [1, 4],
+        "problem": "Multiple high-risk scenes detected: 2 scenes with risk score > 50",
+        "impact": {
+          "financial": 34978,
+          "schedule": 5.0,
+          "logistics": 10493
+        },
+        "recommendation": "Consider risk mitigation strategies, increase insurance coverage, hire specialized safety personnel",
+        "grounding": "Production optimization best practice (Ref: Production Management Handbook, Section 5.3)",
+        "confidence": 0.85,
+        "agent_reasoning": "CrossSceneAuditor identified pattern from safety_cluster clustering analysis"
+      },
+      {
+        "id": "csi-b2e1f4a9-c8d7-4a21-9d6e-8f3a4b2c5e7d",
+        "insight_type": "BUDGET_CONCENTRATION",
+        "scene_ids": [1, 2, 4],
+        "problem": "Budget concentration in 3 scenes accounting for > 40% of budget",
+        "impact": {
+          "financial": 185892,
+          "schedule": 0.0,
+          "logistics": 55768
+        },
+        "recommendation": "Consider splitting expensive scenes or phased production approach",
+        "grounding": "Production optimization best practice (Ref: Production Management Handbook, Section 5.3)",
+        "confidence": 0.8,
+        "agent_reasoning": "CrossSceneAuditor identified pattern from budget_concentration clustering analysis"
+      },
+      {
+        "id": "csi-c5d3e2a1-f9b6-4c18-8e7f-2a3d4c5e6f7g",
+        "insight_type": "LOCATION_CHAIN",
+        "scene_ids": [1, 2, 3, 4, 5, 6, 7, 8],
+        "problem": "4 unique locations detected - logistical complexity and transportation overhead",
+        "impact": {
+          "financial": 40000,
+          "schedule": 4.0,
+          "logistics": 12000
+        },
+        "recommendation": "Optimize shooting schedule by location clustering, negotiate group rates with vendors",
+        "grounding": "Production optimization best practice (Ref: Production Management Handbook, Section 5.3)",
+        "confidence": 0.88,
+        "agent_reasoning": "CrossSceneAuditor identified pattern from location_chain clustering analysis"
+      }
+    ],
+    "total_insights": 3
+  },
+  "production_recommendations": {
+    "agent": "MitigationPlannerAgent",
+    "recommendations": [
+      {
+        "priority": "CRITICAL",
+        "recommendation": "Allocate experienced stunt coordinator for 2 high-risk scenes",
+        "budget_impact": "$30,000 additional",
+        "risk_reduction": "35%",
+        "grounding": "AMPTP Safety Standards requirement"
+      },
+      {
+        "priority": "HIGH",
+        "recommendation": "Consolidate location shooting to reduce crew mobilization",
+        "budget_impact": "-$25,000 savings",
+        "efficiency_gain": "3 production days saved",
+        "grounding": "Production scheduling optimization (industry standard)"
+      },
+      {
+        "priority": "MEDIUM",
+        "recommendation": "Establish 15% contingency reserve ($74,335)",
+        "budget_impact": "Recommended contingency",
+        "risk_reduction": "Budget variance control",
+        "grounding": "Financial risk management standard (Ref: Production Finance Guidelines)"
+      }
+    ]
+  },
+  "technical_analysis": {
+    "methodology": {
+      "extraction": "Multi-agent scene analysis with confidence scoring",
+      "risk_scoring": "5-dimensional risk matrix (Safety, Logistics, Schedule, Budget, Compliance)",
+      "budget_estimation": "Three-point estimation with volatility analysis",
+      "cross_scene": "Graph-based pattern detection across 8 scenes"
+    },
+    "data_sources": {
+      "location_library": "35 location profiles with permit tiers and multipliers",
+      "rate_card": "52 department entries across indie/mid/big budget tiers",
+      "risk_weights": "Validated risk scoring model with 15+ factor analysis",
+      "city_multipliers": "Regional cost adjustments (18 major cities)"
+    },
+    "grounding_confidence": 0.89
+  },
+  "agentic_framework": {
+    "crew_size": 5,
+    "agent_hierarchy": "Hierarchical (Manager + Specialists)",
+    "agents": [
+      "SceneExtractorAgent (Script parsing & scene identification)",
+      "RiskScorerAgent (Multi-dimensional risk assessment)",
+      "BudgetEstimatorAgent (Three-point budget estimation)",
+      "CrossSceneAuditorAgent (Pattern detection & insights)",
+      "MitigationPlannerAgent (Recommendations & strategy)"
+    ],
+    "mcp_tools_utilized": 4,
+    "rag_documents_referenced": "Yes",
+    "knowledge_integration": "Full production knowledge base grounding",
+    "collaboration_style": "Sequential workflow with cross-agent validation"
+  },
+  "generated_at": "2026-01-31T16:30:45.123456Z"
+}
