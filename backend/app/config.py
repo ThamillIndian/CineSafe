@@ -8,9 +8,9 @@ from typing import Optional
 class Settings(BaseSettings):
     """Application settings from environment variables"""
     
-    # Database
-    database_url: str = "postgresql+asyncpg://shootsafe:shootsafe@localhost:5432/shootsafe_db"
-    sync_database_url: str = "postgresql://shootsafe:shootsafe@localhost:5432/shootsafe_db"
+    # Database (SQLite - no setup needed!)
+    database_url: str = "sqlite+aiosqlite:///./shootsafe.db"
+    sync_database_url: str = "sqlite:///./shootsafe.db"
     
     # Redis
     redis_url: str = "redis://localhost:6379/0"

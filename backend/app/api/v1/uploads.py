@@ -42,7 +42,12 @@ def extract_text_from_docx(file_path: str) -> tuple[str, int]:
     try:
         doc = DocxDocument(file_path)
         text = "\n".join([para.text for para in doc.paragraphs])
-        return text, len(doc.paragraphs)
+        
+        # Estimate pages based on content length (roughly 3000 chars per page)
+        # This is more accurate than counting paragraphs
+        estimated_pages = max(1, len(text) // 3000)
+        
+        return text, estimated_pages
     except Exception as e:
         logger.error(f"DOCX extraction error: {e}")
         raise
