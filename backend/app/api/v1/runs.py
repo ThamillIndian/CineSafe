@@ -17,6 +17,97 @@ from app.config import settings
 logger = logging.getLogger(__name__)
 router = APIRouter()
 
+# Initialize mock orchestrator at module level
+from app.agents.mock_orchestrator import MockOrchestratorEngine
+mock_orchestrator = MockOrchestratorEngine()
+
+
+# ============== HELPER FUNCTION: Store Pipeline Results ==============
+async def _store_pipeline_results(run_id: str, result: dict, session: AsyncSession) -> None:
+    """Store pipeline results in database"""
+    from app.models.database import Scene, SceneExtraction, SceneRisk, SceneCost, CrossSceneInsight, ProjectSummary, InsightType
+    
+    try:
+        # Store scenes
+        if "scenes" in result:
+            for scene_data in result["scenes"]:
+                scene = Scene(
+                    id=scene_data.get("id", str(uuid.uuid4())),
+                    run_id=run_id,
+                    scene_number=scene_data["scene_number"],
+                    heading=scene_data.get("heading"),
+                    location=scene_data.get("location"),
+                    raw_text=scene_data.get("raw_text", ""),
+                )
+                session.add(scene)
+                await session.flush()
+                
+                # Store extraction
+                if "extraction" in scene_data:
+                    extraction = SceneExtraction(
+                        id=str(uuid.uuid4()),
+                        scene_id=scene.id,
+                        extraction_json=scene_data["extraction"],
+                        confidence_avg=0.75
+                    )
+                    session.add(extraction)
+                    await session.flush()
+                
+                # Store risk
+                if "risk" in scene_data:
+                    risk = SceneRisk(
+                        id=str(uuid.uuid4()),
+                        scene_id=scene.id,
+                        safety_score=scene_data["risk"].get("safety_score", 0),
+                        logistics_score=scene_data["risk"].get("logistics_score", 0),
+                        schedule_score=scene_data["risk"].get("schedule_score", 0),
+                        budget_score=scene_data["risk"].get("budget_score", 0),
+                        compliance_score=scene_data["risk"].get("compliance_score", 0),
+                        total_risk_score=scene_data["risk"].get("total_risk_score", 0),
+                        amplification_factor=scene_data["risk"].get("amplification_factor", 1.0),
+                        risk_drivers=scene_data["risk"].get("risk_drivers", [])
+                    )
+                    session.add(risk)
+                
+                # Store cost
+                if "budget" in scene_data:
+                    cost = SceneCost(
+                        id=str(uuid.uuid4()),
+                        scene_id=scene.id,
+                        cost_min=scene_data["budget"].get("cost_min", 0),
+                        cost_likely=scene_data["budget"].get("cost_likely", 0),
+                        cost_max=scene_data["budget"].get("cost_max", 0),
+                        line_items=scene_data["budget"].get("line_items", []),
+                        volatility_drivers=scene_data["budget"].get("volatility_drivers", [])
+                    )
+                    session.add(cost)
+        
+        # Store cross-scene insights
+        if "insights" in result:
+            for insight_data in result["insights"]:
+                insight = CrossSceneInsight(
+                    id=insight_data.get("id", str(uuid.uuid4())),
+                    project_id=result.get("project_id"),
+                    run_id=run_id,
+                    insight_type=InsightType.LOCATION_CHAIN,  # Can be mapped from insight_data
+                    scene_ids=insight_data.get("scene_ids", []),
+                    problem_description=insight_data.get("problem_description"),
+                    impact_financial=insight_data.get("impact_financial"),
+                    impact_schedule=insight_data.get("impact_schedule"),
+                    recommendation=insight_data.get("recommendation"),
+                    suggested_reorder=insight_data.get("suggested_reorder"),
+                    confidence=insight_data.get("confidence", 0.0)
+                )
+                session.add(insight)
+        
+        await session.commit()
+        logger.info("✅ Pipeline results stored in database")
+    
+    except Exception as e:
+        logger.error(f"❌ Failed to store results: {e}")
+        await session.rollback()
+        raise
+
 
 # ============== START PIPELINE RUN ==============
 @router.post("/{project_id}/{document_id}", response_model=dict, status_code=status.HTTP_202_ACCEPTED)
@@ -160,7 +251,7 @@ async def start_pipeline_run(
                 logger.info("🔍 Finding insights...")
                 
                 # Store scenes and insights in database
-                await self._store_pipeline_results(run.id, result, session)
+                await _store_pipeline_results(run.id, result, session)
                 
                 # Mark as completed
                 run.status = RunStatus.COMPLETED
@@ -198,91 +289,6 @@ async def start_pipeline_run(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=f"Failed to start pipeline: {str(e)}"
         )
-    
-    async def _store_pipeline_results(self, run_id: str, result: dict, session) -> None:
-        """Store pipeline results in database"""
-        from app.models.database import Scene, SceneExtraction, SceneRisk, SceneCost, CrossSceneInsight, ProjectSummary, InsightType
-        import uuid
-        
-        try:
-            # Store scenes
-            if "scenes" in result:
-                for scene_data in result["scenes"]:
-                    scene = Scene(
-                        id=scene_data.get("id", str(uuid.uuid4())),
-                        run_id=run_id,
-                        scene_number=scene_data["scene_number"],
-                        heading=scene_data.get("heading"),
-                        location=scene_data.get("location"),
-                        raw_text=scene_data.get("raw_text", ""),
-                    )
-                    session.add(scene)
-                    await session.flush()
-                    
-                    # Store extraction
-                    if "extraction" in scene_data:
-                        extraction = SceneExtraction(
-                            id=str(uuid.uuid4()),
-                            scene_id=scene.id,
-                            extraction_json=scene_data["extraction"],
-                            confidence_avg=0.75
-                        )
-                        session.add(extraction)
-                        await session.flush()
-                    
-                    # Store risk
-                    if "risk" in scene_data:
-                        risk = SceneRisk(
-                            id=str(uuid.uuid4()),
-                            scene_id=scene.id,
-                            safety_score=scene_data["risk"].get("safety_score", 0),
-                            logistics_score=scene_data["risk"].get("logistics_score", 0),
-                            schedule_score=scene_data["risk"].get("schedule_score", 0),
-                            budget_score=scene_data["risk"].get("budget_score", 0),
-                            compliance_score=scene_data["risk"].get("compliance_score", 0),
-                            total_risk_score=scene_data["risk"].get("total_risk_score", 0),
-                            amplification_factor=scene_data["risk"].get("amplification_factor", 1.0),
-                            risk_drivers=scene_data["risk"].get("risk_drivers", [])
-                        )
-                        session.add(risk)
-                    
-                    # Store cost
-                    if "budget" in scene_data:
-                        cost = SceneCost(
-                            id=str(uuid.uuid4()),
-                            scene_id=scene.id,
-                            cost_min=scene_data["budget"].get("cost_min", 0),
-                            cost_likely=scene_data["budget"].get("cost_likely", 0),
-                            cost_max=scene_data["budget"].get("cost_max", 0),
-                            line_items=scene_data["budget"].get("line_items", []),
-                            volatility_drivers=scene_data["budget"].get("volatility_drivers", [])
-                        )
-                        session.add(cost)
-            
-            # Store cross-scene insights
-            if "insights" in result:
-                for insight_data in result["insights"]:
-                    insight = CrossSceneInsight(
-                        id=insight_data.get("id", str(uuid.uuid4())),
-                        project_id=result.get("project_id"),
-                        run_id=run_id,
-                        insight_type=InsightType.LOCATION_CHAIN,  # Can be mapped from insight_data
-                        scene_ids=insight_data.get("scene_ids", []),
-                        problem_description=insight_data.get("problem_description"),
-                        impact_financial=insight_data.get("impact_financial"),
-                        impact_schedule=insight_data.get("impact_schedule"),
-                        recommendation=insight_data.get("recommendation"),
-                        suggested_reorder=insight_data.get("suggested_reorder"),
-                        confidence=insight_data.get("confidence", 0.0)
-                    )
-                    session.add(insight)
-            
-            await session.commit()
-            logger.info("✅ Pipeline results stored in database")
-        
-        except Exception as e:
-            logger.error(f"❌ Failed to store results: {e}")
-            await session.rollback()
 
 
 # ============== GET RUN STATUS ==============

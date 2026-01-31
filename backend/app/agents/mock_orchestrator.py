@@ -9,6 +9,7 @@ import re
 import json
 from datetime import datetime
 import random
+import uuid
 
 logger = logging.getLogger(__name__)
 
@@ -20,29 +21,8 @@ class MockOrchestratorEngine:
     """
     
     def __init__(self):
-        """Initialize with access to datasets"""
-        self.risk_weights = {}
-        self.rate_card = {}
-        self.complexity_multipliers = {}
-        self.load_datasets()
-    
-    def load_datasets(self):
-        """Load datasets into memory for quick access"""
-        try:
-            from app.datasets.loader import dataset_loader
-            dataset_loader.load_all()
-            
-            # Get datasets
-            if hasattr(dataset_loader, 'rate_card'):
-                self.rate_card = dataset_loader.rate_card
-            if hasattr(dataset_loader, 'risk_weights'):
-                self.risk_weights = dataset_loader.risk_weights
-            if hasattr(dataset_loader, 'complexity_multipliers'):
-                self.complexity_multipliers = dataset_loader.complexity_multipliers
-            
-            logger.info("✅ Mock orchestrator datasets loaded")
-        except Exception as e:
-            logger.warning(f"⚠️ Could not load datasets: {e}")
+        """Initialize mock orchestrator"""
+        logger.info("🤖 Mock Orchestrator initialized")
     
     def run_pipeline(self, project_id: str, script_text: str) -> Dict[str, Any]:
         """
@@ -113,7 +93,7 @@ class MockOrchestratorEngine:
             time_of_day = time_match.group(1) if time_match else "DAY"
             
             scenes.append({
-                "id": f"scene-{idx}",
+                "id": str(uuid.uuid4()),
                 "scene_number": idx,
                 "heading": heading.strip(),
                 "location": location,
@@ -204,7 +184,7 @@ class MockOrchestratorEngine:
         high_risk_scenes = [s for s in scenes if s["risk"]["total_risk_score"] > 50]
         if high_risk_scenes:
             insights.append({
-                "id": f"insight-{len(insights)+1}",
+                "id": str(uuid.uuid4()),
                 "insight_type": "SAFETY_CLUSTER",
                 "scene_ids": [s["scene_number"] for s in high_risk_scenes],
                 "problem_description": f"Multiple high-risk scenes detected: {len(high_risk_scenes)} scenes with risk score > 50",
@@ -219,7 +199,7 @@ class MockOrchestratorEngine:
         expensive_scenes = sorted(scenes, key=lambda s: s["budget"]["cost_likely"], reverse=True)[:3]
         if expensive_scenes:
             insights.append({
-                "id": f"insight-{len(insights)+1}",
+                "id": str(uuid.uuid4()),
                 "insight_type": "BUDGET_CONCENTRATION",
                 "scene_ids": [s["scene_number"] for s in expensive_scenes],
                 "problem_description": f"Budget concentration in {len(expensive_scenes)} scenes accounting for > 40% of budget",
@@ -234,7 +214,7 @@ class MockOrchestratorEngine:
         unique_locations = len(set([s["extraction"]["location"]["value"] for s in scenes]))
         if unique_locations > 3:
             insights.append({
-                "id": f"insight-{len(insights)+1}",
+                "id": str(uuid.uuid4()),
                 "insight_type": "LOCATION_CHAIN",
                 "scene_ids": list(range(1, len(scenes) + 1)),
                 "problem_description": f"{unique_locations} unique locations detected - logistical complexity and transportation overhead",
