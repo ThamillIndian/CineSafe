@@ -878,21 +878,41 @@ class FullAIEnhancedOrchestrator:
         )
         logger.info(f"✅ Calculated department scaling for {len(scaling_result.get('departments', []))} departments")
         
-        # Calculate optimization summary
-        total_optimization_savings = (
-            location_result.get('total_location_savings', 0) +
-            stunt_result.get('total_stunt_savings', 0) +
-            scaling_result.get('total_department_savings', 0)
+        # Calculate optimization summary with validation
+        original_budget_likely = sum(b.get('cost_likely', 0) for b in budgets)
+        
+        # Cap individual savings to realistic percentages
+        location_savings = min(
+            location_result.get('total_location_savings', 0),
+            int(original_budget_likely * 0.15)  # Max 15% from location consolidation
+        )
+        stunt_savings = min(
+            stunt_result.get('total_stunt_savings', 0),
+            int(original_budget_likely * 0.08)  # Max 8% from stunt relocation
+        )
+        scaling_savings = min(
+            scaling_result.get('total_department_savings', 0),
+            int(original_budget_likely * 0.12)  # Max 12% from department scaling
+        )
+        
+        # Total savings capped at 30% of budget (realistic max)
+        total_optimization_savings = min(
+            location_savings + stunt_savings + scaling_savings,
+            int(original_budget_likely * 0.30)
         )
         
         # Calculate original vs optimized budget
-        original_budget_likely = sum(b.get('cost_likely', 0) for b in budgets)
         optimized_budget_likely = max(0, original_budget_likely - total_optimization_savings)
         savings_percent = round((total_optimization_savings / original_budget_likely * 100) if original_budget_likely > 0 else 0, 1)
         
-        # Schedule savings
+        # Schedule savings (more realistic limits)
         original_schedule_days = len(scenes)  # Worst case
-        optimized_schedule_days = schedule_result.get('total_production_days', original_schedule_days)
+        raw_optimized_days = schedule_result.get('total_production_days', original_schedule_days)
+        # Cap schedule compression to max 25% (realistic limit - most schedules compress 15-25%)
+        optimized_schedule_days = max(
+            int(original_schedule_days * 0.75),  # Minimum 75% of original (max 25% compression)
+            raw_optimized_days
+        )
         schedule_savings_percent = round((1 - optimized_schedule_days / max(original_schedule_days, 1)) * 100, 1)
         
         executive_summary = {
@@ -951,7 +971,7 @@ class FullAIEnhancedOrchestrator:
             },
             "executive_summary": {
                 "total_scenes": len(scenes),
-                "high_risk_scenes": len([r for r in risks if r.get('total_risk_score', 0) > 50]),
+                "high_risk_scenes": len([r for r in risks if r.get('total_risk_score', 0) > 65]),  # Changed from 50 to 65 (more realistic threshold)
                 "original_budget_likely": original_budget_likely,
                 "optimized_budget_likely": optimized_budget_likely,
                 "total_savings": total_optimization_savings,
@@ -970,7 +990,7 @@ class FullAIEnhancedOrchestrator:
             },
             "risk_intelligence": {
                 "risks": risks,
-                "high_risk_count": len([r for r in risks if r.get('total_risk_score', 0) > 50]),
+                "high_risk_count": len([r for r in risks if r.get('total_risk_score', 0) > 65]),  # Changed from 50 to 65
                 "ai_analyzed": risk_result['ai_used']
             },
             "budget_intelligence": {

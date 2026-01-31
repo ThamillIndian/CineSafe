@@ -1,0 +1,7287 @@
+{
+  "run_id": "2a5971c6-452e-48cb-a80f-8b470b12d1f8",
+  "project_id": "6136aad2-2e1e-41d8-a273-7d643d0f7d26",
+  "status": "completed",
+  "analysis_metadata": {
+    "analysis_type": "Full AI-Enhanced Production Analysis with Budget Optimization",
+    "methodology": "9-Agent Pipeline: 5 Core Analysis Agents + 4 Optimization Agents with Safe Fallbacks",
+    "agents_used": [
+      "SceneExtractorAgent (AI + Regex)",
+      "RiskScorerAgent (AI for high-risk + Templates)",
+      "BudgetEstimatorAgent (AI for complex + Templates)",
+      "CrossSceneAuditorAgent (AI + Rules)",
+      "MitigationPlannerAgent (AI + Templates)",
+      "LocationClustererAgent (Budget Optimization)",
+      "StuntLocationAnalyzerAgent (Budget Optimization)",
+      "ScheduleOptimizerAgent (Budget Optimization)",
+      "DepartmentScalerAgent (Budget Optimization)"
+    ],
+    "ai_success_rate": 60,
+    "agents_ai_enabled": [
+      false,
+      true,
+      false,
+      true,
+      true
+    ],
+    "safety_fallbacks_active": true,
+    "indian_context_aware": true,
+    "budget_optimization_enabled": true
+  },
+  "executive_summary": {
+    "total_scenes": 115,
+    "high_risk_scenes": 10,
+    "original_budget_likely": 6290000,
+    "optimized_budget_likely": 0,
+    "total_savings": 7652000,
+    "savings_percent": 121.7,
+    "schedule_original_days": 115,
+    "schedule_optimized_days": 32,
+    "schedule_savings_percent": 72.2,
+    "cross_scene_insights": 0,
+    "recommendations": 10,
+    "optimization_summary": "Budget optimized by 121.7% (₹7,652,000) and schedule compressed by 72.2% (115 → 32 days). Direct ROI through consolidation and smart scheduling."
+  },
+  "scenes_analysis": {
+    "total_scenes": 115,
+    "scenes": [
+      {
+        "scene_number": "2",
+        "location": "GRAVEYARD 5",
+        "time_of_day": "NIGHT 2",
+        "description": "2. EXT. GRAVEYARD 5 - NIGHT 2",
+        "confidence": 0.98,
+        "is_continuation": false
+      },
+      {
+        "scene_number": "3",
+        "location": "HYDERABAD POLICE STATION",
+        "time_of_day": "DAY 3",
+        "description": "3. INT. HYDERABAD POLICE STATION - DAY 3",
+        "confidence": 0.98,
+        "is_continuation": false
+      },
+      {
+        "scene_number": "4",
+        "location": "RAMACHANDRAPURAM",
+        "time_of_day": "DAY 4",
+        "description": "4. EXT. RAMACHANDRAPURAM - DAY 4",
+        "confidence": 0.98,
+        "is_continuation": false
+      },
+      {
+        "scene_number": "4.2",
+        "location": "SCARY HOUSE",
+        "time_of_day": "NIGHT 6",
+        "description": "4.2 INT. SCARY HOUSE - NIGHT 6",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "4.3",
+        "location": "SCARY HOUSE",
+        "time_of_day": "NIGHT 7",
+        "description": "4.3 EXT. SCARY HOUSE - NIGHT 7",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "4.4",
+        "location": "SCARY HOUSE",
+        "time_of_day": "NIGHT 8",
+        "description": "4.4 EXT. SCARY HOUSE - NIGHT 8",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "4.5",
+        "location": "FANCY STORE",
+        "time_of_day": "AFTERNOON 9",
+        "description": "4.5 INT. FANCY STORE - AFTERNOON 9",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "4.6",
+        "location": "RAMACHANDRAPURAM STREETS",
+        "time_of_day": "AFTERNOON 10",
+        "description": "4.6 EXT. RAMACHANDRAPURAM STREETS - AFTERNOON 10",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "4.8",
+        "location": "RAMACHANDRAPURAM 12",
+        "time_of_day": "DAY",
+        "description": "4.8 EXT. RAMACHANDRAPURAM 12",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "4.9",
+        "location": "SCARY HOUSE",
+        "time_of_day": "NIGHT 13",
+        "description": "4.9 EXT. SCARY HOUSE - NIGHT 13",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "4.11",
+        "location": "SCARY HOUSE",
+        "time_of_day": "NIGHT 14",
+        "description": "4.11 INT. SCARY HOUSE - NIGHT 14",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "4.12",
+        "location": "SCARY HOUSE",
+        "time_of_day": "NIGHT 15",
+        "description": "4.12 INT. SCARY HOUSE - NIGHT 15",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "4.13",
+        "location": "SCARY HOUSE",
+        "time_of_day": "NIGHT 16",
+        "description": "4.13 EXT. SCARY HOUSE - NIGHT 16",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "4.14",
+        "location": "RAMACHANDRAPURAM",
+        "time_of_day": "NIGHT 17",
+        "description": "4.14 EXT. RAMACHANDRAPURAM - NIGHT 17",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "4.15",
+        "location": "SCARY HOUSE",
+        "time_of_day": "NIGHT 18",
+        "description": "4.15 EXT. SCARY HOUSE - NIGHT 18",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "4.16",
+        "location": "RAMACHANDRAPURAM",
+        "time_of_day": "NIGHT 19",
+        "description": "4.16 EXT. RAMACHANDRAPURAM - NIGHT 19",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "4.17",
+        "location": "RAMACHANDRAPURAM",
+        "time_of_day": "DAY 20",
+        "description": "4.17 EXT. RAMACHANDRAPURAM - DAY 20",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "4.18",
+        "location": "SCARY HOUSE",
+        "time_of_day": "DAY 21",
+        "description": "4.18 EXT. SCARY HOUSE - DAY 21",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "4.19",
+        "location": "RAMACHANDRAPURAM",
+        "time_of_day": "DAY 22",
+        "description": "4.19 EXT. RAMACHANDRAPURAM - DAY 22",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "4.22",
+        "location": "RANDOM HOUSES",
+        "time_of_day": "RAMACHANDRAPURAM - NIGHT 23",
+        "description": "4.22 INT. RANDOM HOUSES - RAMACHANDRAPURAM - NIGHT 23",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "4.23",
+        "location": "FANCY STORE",
+        "time_of_day": "NIGHT 24",
+        "description": "4.23 INT. FANCY STORE - NIGHT 24",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "4.24",
+        "location": "SCARY HOUSE",
+        "time_of_day": "NIGHT 25",
+        "description": "4.24 EXT. SCARY HOUSE - NIGHT 25",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "4.26",
+        "location": "TEMPLE",
+        "time_of_day": "RAMACHANDRAPURAM - DAY 27",
+        "description": "4.26 EXT. TEMPLE - RAMACHANDRAPURAM - DAY 27",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "4.27",
+        "location": "VEGETABLE SHOP",
+        "time_of_day": "NIGHT 28",
+        "description": "4.27 EXT. VEGETABLE SHOP - NIGHT 28",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "4.28",
+        "location": "SCARY HOUSE",
+        "time_of_day": "NIGHT 29",
+        "description": "4.28 EXT. SCARY HOUSE - NIGHT 29",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "4.30",
+        "location": "VEGETABLE SHOP",
+        "time_of_day": "DAY 30",
+        "description": "4.30 EXT. VEGETABLE SHOP - DAY 30",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "4.34",
+        "location": "SCARY HOUSE",
+        "time_of_day": "DAY 31",
+        "description": "4.34 EXT. SCARY HOUSE - DAY 31",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "4.35",
+        "location": "SCARY HOUSE",
+        "time_of_day": "DAY 32",
+        "description": "4.35 INT. SCARY HOUSE - DAY 32",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "6",
+        "location": "COLLEGE CLASS ROOM",
+        "time_of_day": "DAY 34",
+        "description": "6. INT. COLLEGE CLASS ROOM - DAY 34",
+        "confidence": 0.98,
+        "is_continuation": false
+      },
+      {
+        "scene_number": "6.1",
+        "location": "COLLEGE HOSTEL HALLWAY",
+        "time_of_day": "DAY 35",
+        "description": "6.1 INT. COLLEGE HOSTEL HALLWAY - DAY 35",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "6.2",
+        "location": "COLLEGE HOSTEL ROOM",
+        "time_of_day": "DAY 36",
+        "description": "6.2 INT. COLLEGE HOSTEL ROOM - DAY 36",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "7",
+        "location": "OPEN FIELD",
+        "time_of_day": "NIGHT 37",
+        "description": "7. EXT. OPEN FIELD - NIGHT 37",
+        "confidence": 0.98,
+        "is_continuation": false
+      },
+      {
+        "scene_number": "7.1",
+        "location": "HILL",
+        "time_of_day": "NIGHT 38",
+        "description": "7.1 INT. HILL - NIGHT 38",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "7.2",
+        "location": "UNDERWATER",
+        "time_of_day": "NIGHT 39",
+        "description": "7.2 INT. UNDERWATER - NIGHT 39",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "7.3",
+        "location": "SKULL RECONSTRUCTION LAB",
+        "time_of_day": "NIGHT 40",
+        "description": "7.3 INT. SKULL RECONSTRUCTION LAB - NIGHT 40",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "7.4",
+        "location": "FOREST",
+        "time_of_day": "NIGHT 41",
+        "description": "7.4 EXT. FOREST - NIGHT 41",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "6.3",
+        "location": "COLLEGE PREMISES",
+        "time_of_day": "WINDY NIGHT 42",
+        "description": "6.3 EXT. COLLEGE PREMISES - WINDY NIGHT 42",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "6.4",
+        "location": "COLLEGE",
+        "time_of_day": "DAY 43",
+        "description": "6.4 EXT. COLLEGE - DAY 43",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "6.5",
+        "location": "COLLEGE HOSTEL ROOM",
+        "time_of_day": "NIGHT 44",
+        "description": "6.5 INT. COLLEGE HOSTEL ROOM - NIGHT 44",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "6.12",
+        "location": "COLLEGE HOSTEL ROOM",
+        "time_of_day": "NIGHT 51",
+        "description": "6.12 INT. COLLEGE HOSTEL ROOM - NIGHT 51",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "8",
+        "location": "HIGHWAY NEAR TIRUPATI",
+        "time_of_day": "DAY 53",
+        "description": "8. EXT. HIGHWAY NEAR TIRUPATI - DAY 53",
+        "confidence": 0.98,
+        "is_continuation": false
+      },
+      {
+        "scene_number": "8.1",
+        "location": "ABANDONED GENERAL HOSPITAL",
+        "time_of_day": "DAY 54",
+        "description": "8.1 EXT. ABANDONED GENERAL HOSPITAL - DAY 54",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "8.2",
+        "location": "OP WARD",
+        "time_of_day": "GENERAL WARD - DAY 55",
+        "description": "8.2 INT. OP WARD - GENERAL WARD - DAY 55",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "8.3",
+        "location": "MORTUARY",
+        "time_of_day": "GENERAL HOSPITAL - DAY 56",
+        "description": "8.3 INT. MORTUARY - GENERAL HOSPITAL - DAY 56",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "8.3.1",
+        "location": "Y JUNCTION",
+        "time_of_day": "NIGHT 57",
+        "description": "8.3.1 EXT. Y JUNCTION - NIGHT 57",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "8.4",
+        "location": "DIVYAVATHI APARTMENT",
+        "time_of_day": "EVENING 58",
+        "description": "8.4 EXT. DIVYAVATHI APARTMENT - EVENING 58",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "8.5",
+        "location": "WOODS",
+        "time_of_day": "EVENING 59",
+        "description": "8.5 EXT. WOODS - EVENING 59",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "8.6",
+        "location": "CELLAR",
+        "time_of_day": "DIVYAVATHI APARTMENT - NIGHT 60",
+        "description": "8.6 INT. CELLAR - DIVYAVATHI APARTMENT - NIGHT 60",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "8.7",
+        "location": "STAIRCASE",
+        "time_of_day": "DIVYAVATHI APARTMENT - NIGHT 61",
+        "description": "8.7 INT. STAIRCASE - DIVYAVATHI APARTMENT - NIGHT 61",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "8.8",
+        "location": "FOURTH FLOOR",
+        "time_of_day": "STAIRCASE - DIVYAVATHI APARTMENT -",
+        "description": "8.8 INT. FOURTH FLOOR - STAIRCASE - DIVYAVATHI APARTMENT -",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "8.9",
+        "location": "HALLWAY",
+        "time_of_day": "DIVYAVATHI APARTMENT - NIGHT 63",
+        "description": "8.9 INT. HALLWAY - DIVYAVATHI APARTMENT - NIGHT 63",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "8.11",
+        "location": "WOODS",
+        "time_of_day": "NIGHT 65",
+        "description": "8.11 EXT. WOODS - NIGHT 65",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "8.12",
+        "location": "POND IN THE WOODS",
+        "time_of_day": "NIGHT 66",
+        "description": "8.12 EXT. POND IN THE WOODS - NIGHT 66",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "9",
+        "location": "COLLEGE HOSTEL ROOM",
+        "time_of_day": "NIGHT 67",
+        "description": "9. INT. COLLEGE HOSTEL ROOM - NIGHT 67",
+        "confidence": 0.98,
+        "is_continuation": false
+      },
+      {
+        "scene_number": "10",
+        "location": "COLLEGE HOSTEL ROOM",
+        "time_of_day": "NIGHT 69",
+        "description": "10. INT. COLLEGE HOSTEL ROOM - NIGHT 69",
+        "confidence": 0.98,
+        "is_continuation": false
+      },
+      {
+        "scene_number": "10.1",
+        "location": "BALCONY",
+        "time_of_day": "DIVYAVATHI APARTMENT - NIGHT 70",
+        "description": "10.1 INT. BALCONY - DIVYAVATHI APARTMENT - NIGHT 70",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "10.2",
+        "location": "CELLAR",
+        "time_of_day": "DIVYAVATHI APARTMENT - NIGHT 71",
+        "description": "10.2 INT. CELLAR - DIVYAVATHI APARTMENT - NIGHT 71",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "10.4",
+        "location": "COLLEGE HOSTEL ROOM",
+        "time_of_day": "NIGHT 73",
+        "description": "10.4 INT. COLLEGE HOSTEL ROOM - NIGHT 73",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "10.5",
+        "location": "TEA PLACE",
+        "time_of_day": "NIGHT 74",
+        "description": "10.5 INT. TEA PLACE - NIGHT 74",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "10.7",
+        "location": "DIVYAVATHI APARTMENT",
+        "time_of_day": "DAY 76",
+        "description": "10.7 EXT. DIVYAVATHI APARTMENT - DAY 76",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "10.9",
+        "location": "WOODS",
+        "time_of_day": "DAY 78",
+        "description": "10.9 EXT. WOODS - DAY 78",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "10.11",
+        "location": "DIVYAVATHI APARTMENT",
+        "time_of_day": "DAY 80",
+        "description": "10.11 EXT. DIVYAVATHI APARTMENT - DAY 80",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "10.12",
+        "location": "WOODS",
+        "time_of_day": "DAY/NIGHT 81",
+        "description": "10.12 EXT. WOODS - DAY/NIGHT 81",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "10.13",
+        "location": "RETIREMENT HOME",
+        "time_of_day": "DAY 82",
+        "description": "10.13 EXT. RETIREMENT HOME - DAY 82",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "10.14",
+        "location": "COLLEGE LIBRARY",
+        "time_of_day": "DAY 83",
+        "description": "10.14 INT. COLLEGE LIBRARY - DAY 83",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "10.15",
+        "location": "DIVYAVATHI APARTMENT",
+        "time_of_day": "DAY/NIGHT 84",
+        "description": "10.15 EXT. DIVYAVATHI APARTMENT - DAY/NIGHT 84",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "10.16",
+        "location": "DIVYAVATHI APARTMENT",
+        "time_of_day": "DAY 85",
+        "description": "10.16 EXT. DIVYAVATHI APARTMENT - DAY 85",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "11",
+        "location": "BRICK MAKING FACTORY",
+        "time_of_day": "EVENING 86",
+        "description": "11. INT. BRICK MAKING FACTORY - EVENING 86",
+        "confidence": 0.98,
+        "is_continuation": false
+      },
+      {
+        "scene_number": "12",
+        "location": "DIVYAVATHI APARTMENT",
+        "time_of_day": "NIGHT 87",
+        "description": "12. EXT. DIVYAVATHI APARTMENT - NIGHT 87",
+        "confidence": 0.98,
+        "is_continuation": false
+      },
+      {
+        "scene_number": 1,
+        "location": "WOODS",
+        "time_of_day": "DAY/NIGHT 89",
+        "description": "EXT. WOODS - DAY/NIGHT 89",
+        "confidence": 0.9,
+        "is_continuation": false
+      },
+      {
+        "scene_number": "15.1",
+        "location": "BRICK MAKING FACTORY",
+        "time_of_day": "EVENING 92",
+        "description": "15.1 INT. BRICK MAKING FACTORY - EVENING 92",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "15.2",
+        "location": "DIVYAVATHI APARTMENT",
+        "time_of_day": "DAY/NIGHT 93",
+        "description": "15.2 EXT. DIVYAVATHI APARTMENT - DAY/NIGHT 93",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "15.4",
+        "location": "BRICK MAKING FACTORY",
+        "time_of_day": "EVENING 95",
+        "description": "15.4 INT. BRICK MAKING FACTORY - EVENING 95",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "15.6",
+        "location": "BUILDER’S OFFICE 97",
+        "time_of_day": "DAY",
+        "description": "15.6 EXT. BUILDER’S OFFICE 97",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "15.7",
+        "location": "BRICK MAKING FACTORY",
+        "time_of_day": "EVENING 98",
+        "description": "15.7 INT. BRICK MAKING FACTORY - EVENING 98",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "16",
+        "location": "COLLEGE PARK/OPEN GROUND",
+        "time_of_day": "EVENING 99",
+        "description": "16. INT. COLLEGE PARK/OPEN GROUND - EVENING 99",
+        "confidence": 0.98,
+        "is_continuation": false
+      },
+      {
+        "scene_number": "17",
+        "location": "CITY",
+        "time_of_day": "NIGHT 17.1 EXT. DIVYAVATHI APARTMENT -",
+        "description": "17 EXT. CITY - NIGHT 17.1 EXT. DIVYAVATHI APARTMENT -",
+        "confidence": 0.98,
+        "is_continuation": false
+      },
+      {
+        "scene_number": "18.1",
+        "location": "WOODS",
+        "time_of_day": "NIGHT 102",
+        "description": "18.1 EXT. WOODS - NIGHT 102",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "18.5",
+        "location": "BALCONY",
+        "time_of_day": "DIVYAVATHI APARTMENT - NIGHT 105",
+        "description": "18.5 INT. BALCONY - DIVYAVATHI APARTMENT - NIGHT 105",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "18.6",
+        "location": "WOODS",
+        "time_of_day": "NIGHT 106",
+        "description": "18.6 EXT. WOODS - NIGHT 106",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "18.7",
+        "location": "PINKY’S SCULPTURE GALLERY",
+        "time_of_day": "NIGHT 107",
+        "description": "18.7 INT. PINKY’S SCULPTURE GALLERY - NIGHT 107",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "21.1",
+        "location": "COLLEGE HOSTEL ROOM",
+        "time_of_day": "DAY 111",
+        "description": "21.1 INT. COLLEGE HOSTEL ROOM - DAY 111",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "21.2",
+        "location": "COLLEGE CANTEEN",
+        "time_of_day": "DAY 112",
+        "description": "21.2 INT. COLLEGE CANTEEN - DAY 112",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "23",
+        "location": "COLLEGE CLASS ROOM",
+        "time_of_day": "DAY 115",
+        "description": "23. INT. COLLEGE CLASS ROOM - DAY 115",
+        "confidence": 0.98,
+        "is_continuation": false
+      },
+      {
+        "scene_number": "24",
+        "location": "OLD TEMPLE",
+        "time_of_day": "DAY 116",
+        "description": "24. EXT. OLD TEMPLE - DAY 116",
+        "confidence": 0.98,
+        "is_continuation": false
+      },
+      {
+        "scene_number": "24.1",
+        "location": "OLD TEMPLE",
+        "time_of_day": "DAY 117",
+        "description": "24.1 INT. OLD TEMPLE - DAY 117",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "24.2",
+        "location": "INSIDE THE MAIN TEMPLE",
+        "time_of_day": "DAY 118",
+        "description": "24.2 INT. INSIDE THE MAIN TEMPLE - DAY 118",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "24.3",
+        "location": "DIVYAVATHI APARTMENT",
+        "time_of_day": "DAY 119",
+        "description": "24.3 EXT. DIVYAVATHI APARTMENT - DAY 119",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "25.1",
+        "location": "COLLEGE HOSTEL ROOM",
+        "time_of_day": "DAY/NIGHT 122",
+        "description": "25.1 INT. COLLEGE HOSTEL ROOM - DAY/NIGHT 122",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "26",
+        "location": "COLLEGE LIBRARY",
+        "time_of_day": "DAY 123",
+        "description": "26. INT. COLLEGE LIBRARY - DAY 123",
+        "confidence": 0.98,
+        "is_continuation": false
+      },
+      {
+        "scene_number": "27",
+        "location": "HALLWAY",
+        "time_of_day": "DIVYAVATHI APARTMENT - DAY 124",
+        "description": "27. INT. HALLWAY - DIVYAVATHI APARTMENT - DAY 124",
+        "confidence": 0.98,
+        "is_continuation": false
+      },
+      {
+        "scene_number": "27.2",
+        "location": "WOODS",
+        "time_of_day": "DAY 126",
+        "description": "27.2 EXT. WOODS - DAY 126",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "27.3",
+        "location": "HIGHWAY ROAD",
+        "time_of_day": "DAY 127",
+        "description": "27.3 EXT. HIGHWAY ROAD - DAY 127",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "27.4",
+        "location": "CAR",
+        "time_of_day": "DAY 128",
+        "description": "27.4 INT. CAR - DAY 128",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "27.5",
+        "location": "PALLAVI’S HOUSE",
+        "time_of_day": "DAY 129",
+        "description": "27.5 EXT. PALLAVI’S HOUSE - DAY 129",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "27.6",
+        "location": "RETIRED CONSTABLE’S HOUSE",
+        "time_of_day": "DAY 130",
+        "description": "27.6 INT. RETIRED CONSTABLE’S HOUSE - DAY 130",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "27.7",
+        "location": "RETIRED CONSTABLE’S HOUSE",
+        "time_of_day": "DAY 131",
+        "description": "27.7 EXT. RETIRED CONSTABLE’S HOUSE - DAY 131",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "27.8",
+        "location": "NOOR’S HOUSE",
+        "time_of_day": "AFTERNOON 132",
+        "description": "27.8 INT. NOOR’S HOUSE - AFTERNOON 132",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "27.9",
+        "location": "CELLAR",
+        "time_of_day": "WORKING WOMEN HOSTEL - EVENING 133",
+        "description": "27.9 INT. CELLAR - WORKING WOMEN HOSTEL - EVENING 133",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "27.10",
+        "location": "HIGHWAY ROAD",
+        "time_of_day": "DAY 134",
+        "description": "27.10 EXT. HIGHWAY ROAD - DAY 134",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "27.11",
+        "location": "CAR",
+        "time_of_day": "DAY 135",
+        "description": "27.11 INT. CAR - DAY 135",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "27.12",
+        "location": "RETIRED CONSTABLE’S HOUSE",
+        "time_of_day": "EVENING 136",
+        "description": "27.12 EXT. RETIRED CONSTABLE’S HOUSE - EVENING 136",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "27.14",
+        "location": "KRUPA OLD AGE HOME",
+        "time_of_day": "EVENING 137",
+        "description": "27.14 INT. KRUPA OLD AGE HOME - EVENING 137",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "27.15",
+        "location": "LAKE SIDE",
+        "time_of_day": "EVENING 138",
+        "description": "27.15 EXT. LAKE SIDE - EVENING 138",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "27.16",
+        "location": "HILLTOP",
+        "time_of_day": "DAY 139",
+        "description": "27.16 EXT. HILLTOP - DAY 139",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "28",
+        "location": "GRAVEYARD 2",
+        "time_of_day": "NIGHT 140",
+        "description": "28. EXT. GRAVEYARD 2 - NIGHT 140",
+        "confidence": 0.98,
+        "is_continuation": false
+      },
+      {
+        "scene_number": "28.1",
+        "location": "GRAVEYARD 2",
+        "time_of_day": "NIGHT 141",
+        "description": "28.1 INT. GRAVEYARD 2 - NIGHT 141",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "28.2",
+        "location": "GRAVEYARD 3",
+        "time_of_day": "NIGHT 142",
+        "description": "28.2 INT. GRAVEYARD 3 - NIGHT 142",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "28.3",
+        "location": "GRAVEYARD 4",
+        "time_of_day": "NIGHT 143",
+        "description": "28.3 INT. GRAVEYARD 4 - NIGHT 143",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "29",
+        "location": "PINKY’S LAB",
+        "time_of_day": "NIGHT 144",
+        "description": "29. INT. PINKY’S LAB - NIGHT 144",
+        "confidence": 0.98,
+        "is_continuation": false
+      },
+      {
+        "scene_number": "29.1",
+        "location": "PINKY’S LAB",
+        "time_of_day": "NIGHT 145",
+        "description": "29.1 EXT. PINKY’S LAB - NIGHT 145",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "29.2",
+        "location": "PINKY’S LAB",
+        "time_of_day": "NIGHT 146",
+        "description": "29.2 INT. PINKY’S LAB - NIGHT 146",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "29.3",
+        "location": "VENNELA’S ACCIDENT SPOT",
+        "time_of_day": "HIGHWAY - DAY 147",
+        "description": "29.3 EXT. VENNELA’S ACCIDENT SPOT - HIGHWAY - DAY 147",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "29.4",
+        "location": "PALLAVI’S SUICIDE SPOT",
+        "time_of_day": "LAKE - DAY 148",
+        "description": "29.4 EXT. PALLAVI’S SUICIDE SPOT - LAKE - DAY 148",
+        "confidence": 0.98,
+        "is_continuation": true
+      },
+      {
+        "scene_number": "29.5",
+        "location": "NOOR’S ACCIDENT SPOT",
+        "time_of_day": "DOLL FACTORY - DAY 149",
+        "description": "29.5 INT. NOOR’S ACCIDENT SPOT - DOLL FACTORY - DAY 149",
+        "confidence": 0.98,
+        "is_continuation": true
+      }
+    ],
+    "analysis_approach": "AI-extracted with intelligent pattern recognition"
+  },
+  "risk_intelligence": {
+    "risks": [
+      {
+        "scene_number": 2,
+        "total_risk_score": 85,
+        "safety_score": 65,
+        "logistics_score": 70,
+        "schedule_score": 80,
+        "budget_score": 75,
+        "risk_drivers": [
+          "Night shoot in remote graveyard with low visibility",
+          "Potential for uncontrolled environmental hazards (e.g., wildlife, weather)",
+          "Permitting and local regulations for night shoots in sensitive areas"
+        ],
+        "recommendations": [
+          "Obtain necessary permits and coordinate with local authorities for night operations",
+          "Use high-visibility lighting and safety crew for night shoots",
+          "Deploy weather monitoring and contingency plans for sudden changes"
+        ]
+      },
+      {
+        "scene_number": 28,
+        "total_risk_score": 90,
+        "safety_score": 60,
+        "logistics_score": 65,
+        "schedule_score": 75,
+        "budget_score": 80,
+        "risk_drivers": [
+          "High-risk night shoot in remote graveyard with limited access",
+          "Potential for crowd or extra safety incidents",
+          "Weather dependency and schedule delays"
+        ],
+        "recommendations": [
+          "Assign dedicated safety officer for night shoots with crowd control measures",
+          "Pre-schedule and coordinate with local transport for emergency response",
+          "Use drone or lighting rigs to enhance visibility and reduce reliance on human actors"
+        ]
+      },
+      {
+        "scene_number": 28.1,
+        "total_risk_score": 88,
+        "safety_score": 62,
+        "logistics_score": 68,
+        "schedule_score": 78,
+        "budget_score": 77,
+        "risk_drivers": [
+          "Internal scene requiring controlled environment with potential for hazardous props or effects",
+          "Night 141 implies extended shooting duration with fatigue risk",
+          "Logistical coordination with external crew and equipment"
+        ],
+        "recommendations": [
+          "Implement strict safety protocols for indoor effects and props",
+          "Rotate crew and provide rest breaks to mitigate fatigue",
+          "Pre-arrange equipment transport and storage for seamless transitions"
+        ]
+      },
+      {
+        "scene_number": 28.2,
+        "total_risk_score": 92,
+        "safety_score": 55,
+        "logistics_score": 60,
+        "schedule_score": 70,
+        "budget_score": 82,
+        "risk_drivers": [
+          "High-risk internal scene with potential for falls or prop hazards",
+          "Night 142 implies extended duration with high physical demands",
+          "Logistical complexity of moving crew and equipment between graveyards"
+        ],
+        "recommendations": [
+          "Install safety barriers and use harness systems for high-risk stunts",
+          "Coordinate with local transport for emergency evacuation routes",
+          "Pre-schedule all equipment and crew movements to avoid delays"
+        ]
+      },
+      {
+        "scene_number": 28.3,
+        "total_risk_score": 87,
+        "safety_score": 63,
+        "logistics_score": 67,
+        "schedule_score": 76,
+        "budget_score": 79,
+        "risk_drivers": [
+          "Night 143 implies extended shooting with high fatigue risk",
+          "Potential for weather or environmental hazards",
+          "Logistical coordination with external vendors and crew"
+        ],
+        "recommendations": [
+          "Implement fatigue management protocols and rotate crew",
+          "Use weather monitoring systems and have contingency plans",
+          "Pre-coordinate with vendors for seamless equipment and crew support"
+        ]
+      },
+      {
+        "scene_number": "2",
+        "total_risk_score": 85,
+        "safety_score": 65,
+        "logistics_score": 15,
+        "schedule_score": 10,
+        "budget_score": 20,
+        "risk_drivers": [
+          "complexity"
+        ],
+        "recommendations": [
+          "Specialized safety coordinator required"
+        ]
+      },
+      {
+        "scene_number": "3",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4.2",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4.3",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4.4",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4.5",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4.6",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4.8",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4.9",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4.11",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4.12",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4.13",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4.14",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4.15",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4.16",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4.17",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4.18",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4.19",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4.22",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4.23",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4.24",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4.26",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4.27",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4.28",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4.30",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4.34",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "4.35",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "6",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "6.1",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "6.2",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "7",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "7.1",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "7.2",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "7.3",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "7.4",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "6.3",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "6.4",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "6.5",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "6.12",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "8",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "8.1",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "8.2",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "8.3",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "8.3.1",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "8.4",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "8.5",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "8.6",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "8.7",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "8.8",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "8.9",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "8.11",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "8.12",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "9",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "10",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "10.1",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "10.2",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "10.4",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "10.5",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "10.7",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "10.9",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "10.11",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "10.12",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "10.13",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "10.14",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "10.15",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "10.16",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "11",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "12",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": 1,
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "15.1",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "15.2",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "15.4",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "15.6",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "15.7",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "16",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "17",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "18.1",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "18.5",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "18.6",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "18.7",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "21.1",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "21.2",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "23",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "24",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "24.1",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "24.2",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "24.3",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "25.1",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "26",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "27",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "27.2",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "27.3",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "27.4",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "27.5",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "27.6",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "27.7",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "27.8",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "27.9",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "27.10",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "27.11",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "27.12",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "27.14",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "27.15",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "27.16",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "28",
+        "total_risk_score": 85,
+        "safety_score": 65,
+        "logistics_score": 15,
+        "schedule_score": 10,
+        "budget_score": 20,
+        "risk_drivers": [
+          "complexity"
+        ],
+        "recommendations": [
+          "Specialized safety coordinator required"
+        ]
+      },
+      {
+        "scene_number": "28.1",
+        "total_risk_score": 85,
+        "safety_score": 65,
+        "logistics_score": 15,
+        "schedule_score": 10,
+        "budget_score": 20,
+        "risk_drivers": [
+          "complexity"
+        ],
+        "recommendations": [
+          "Specialized safety coordinator required"
+        ]
+      },
+      {
+        "scene_number": "28.2",
+        "total_risk_score": 85,
+        "safety_score": 65,
+        "logistics_score": 15,
+        "schedule_score": 10,
+        "budget_score": 20,
+        "risk_drivers": [
+          "complexity"
+        ],
+        "recommendations": [
+          "Specialized safety coordinator required"
+        ]
+      },
+      {
+        "scene_number": "28.3",
+        "total_risk_score": 85,
+        "safety_score": 65,
+        "logistics_score": 15,
+        "schedule_score": 10,
+        "budget_score": 20,
+        "risk_drivers": [
+          "complexity"
+        ],
+        "recommendations": [
+          "Specialized safety coordinator required"
+        ]
+      },
+      {
+        "scene_number": "29",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "29.1",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "29.2",
+        "total_risk_score": 50,
+        "safety_score": 30,
+        "logistics_score": 5,
+        "schedule_score": 10,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "29.3",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "29.4",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      },
+      {
+        "scene_number": "29.5",
+        "total_risk_score": 35,
+        "safety_score": 15,
+        "logistics_score": 5,
+        "schedule_score": 5,
+        "budget_score": 10,
+        "risk_drivers": [
+          "standard"
+        ],
+        "recommendations": [
+          "Standard safety protocols"
+        ]
+      }
+    ],
+    "high_risk_count": 10,
+    "ai_analyzed": true
+  },
+  "budget_intelligence": {
+    "budgets": [
+      {
+        "scene_number": "2",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "3",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4.2",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4.3",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4.4",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4.5",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4.6",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4.8",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4.9",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4.11",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4.12",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4.13",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4.14",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4.15",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4.16",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4.17",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4.18",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4.19",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4.22",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4.23",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4.24",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4.26",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4.27",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4.28",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4.30",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4.34",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "4.35",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "6",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "6.1",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "6.2",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "7",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "7.1",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "7.2",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "7.3",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "7.4",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "6.3",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "6.4",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "6.5",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "6.12",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "8",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "8.1",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "8.2",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "8.3",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "8.3.1",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "8.4",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "8.5",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "8.6",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "8.7",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "8.8",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "8.9",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "8.11",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "8.12",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "9",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "10",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "10.1",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "10.2",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "10.4",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "10.5",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "10.7",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "10.9",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "10.11",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "10.12",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "10.13",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "10.14",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "10.15",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "10.16",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "11",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "12",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": 1,
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "15.1",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "15.2",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "15.4",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "15.6",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "15.7",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "16",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "17",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "18.1",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "18.5",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "18.6",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "18.7",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "21.1",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "21.2",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "23",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "24",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "24.1",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "24.2",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "24.3",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "25.1",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "26",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "27",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "27.2",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "27.3",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "27.4",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "27.5",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "27.6",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "27.7",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "27.8",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "27.9",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "27.10",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "27.11",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "27.12",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "27.14",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "27.15",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "27.16",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "28",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "28.1",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "28.2",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "28.3",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "29",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "29.1",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "29.2",
+        "cost_min": 48000,
+        "cost_likely": 60000,
+        "cost_max": 90000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 24000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 18000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 12000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 6000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "29.3",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "29.4",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      },
+      {
+        "scene_number": "29.5",
+        "cost_min": 40000,
+        "cost_likely": 50000,
+        "cost_max": 75000,
+        "line_items": [
+          {
+            "department": "Production",
+            "cost": 20000,
+            "reasoning": "Crew and logistics"
+          },
+          {
+            "department": "Equipment",
+            "cost": 15000,
+            "reasoning": "Cameras and gear"
+          },
+          {
+            "department": "Safety",
+            "cost": 10000,
+            "reasoning": "Safety personnel"
+          },
+          {
+            "department": "Permits",
+            "cost": 5000,
+            "reasoning": "Local permits"
+          }
+        ],
+        "volatility_drivers": [
+          "weather",
+          "permits"
+        ]
+      }
+    ],
+    "total_likely": 6290000,
+    "ai_analyzed": false
+  },
+  "cross_scene_intelligence": {
+    "insights": [],
+    "total_insights": 0,
+    "ai_analyzed": true
+  },
+  "production_recommendations": {
+    "recommendations": [
+      {
+        "priority": "CRITICAL",
+        "recommendation": "Obtain all necessary local permits and clearances from municipal authorities and film boards before filming high-risk scenes.",
+        "budget_impact": "₹500,000–₹1.2M (permit fees, legal compliance)",
+        "risk_reduction": "85%",
+        "timeline": "2 weeks pre-production"
+      },
+      {
+        "priority": "CRITICAL",
+        "recommendation": "Hire certified safety officers and conduct mandatory safety briefings for all crew and actors before each high-risk scene.",
+        "budget_impact": "₹300,000–₹600,000 (training, certifications)",
+        "risk_reduction": "90%",
+        "timeline": "1 week pre-scene"
+      },
+      {
+        "priority": "HIGH",
+        "recommendation": "Use local, licensed stunt coordinators familiar with Indian terrain and cultural safety protocols for high-risk action sequences.",
+        "budget_impact": "₹200,000–₹400,000 (stunt coordination fees)",
+        "risk_reduction": "70%",
+        "timeline": "1 week pre-production"
+      },
+      {
+        "priority": "HIGH",
+        "recommendation": "Install and test safety gear (helmets, harnesses, fire extinguishers) for all high-risk scenes in advance with local fire safety inspectors.",
+        "budget_impact": "₹150,000–₹300,000 (equipment + inspection)",
+        "risk_reduction": "65%",
+        "timeline": "1 week pre-scene"
+      },
+      {
+        "priority": "MEDIUM",
+        "recommendation": "Coordinate with local traffic authorities for street or public space scenes; use temporary road closures and signage to minimize hazards.",
+        "budget_impact": "₹100,000–₹200,000 (permits, signage, traffic control)",
+        "risk_reduction": "55%",
+        "timeline": "1 week pre-scene"
+      },
+      {
+        "priority": "MEDIUM",
+        "recommendation": "Implement a ‘scene-by-scene risk register’ with crew sign-offs and daily safety audits.",
+        "budget_impact": "₹50,000–₹100,000 (documentation, audit tools)",
+        "risk_reduction": "45%",
+        "timeline": "1 week pre-production"
+      },
+      {
+        "priority": "MEDIUM",
+        "recommendation": "Use local, culturally appropriate emergency response teams (e.g., fire, ambulance, police) for all high-risk scenes during production.",
+        "budget_impact": "₹100,000–₹200,000 (response coordination fees)",
+        "risk_reduction": "40%",
+        "timeline": "1 week pre-scene"
+      },
+      {
+        "priority": "MEDIUM",
+        "recommendation": "Schedule high-risk scenes during low-traffic hours and avoid monsoon or extreme weather windows.",
+        "budget_impact": "₹50,000–₹100,000 (weather coordination, scheduling)",
+        "risk_reduction": "35%",
+        "timeline": "1 week pre-production"
+      },
+      {
+        "priority": "MEDIUM",
+        "recommendation": "Train actors and crew on emergency evacuation routes and local emergency protocols (e.g., fire drills, medical response procedures).",
+        "budget_impact": "₹75,000–₹150,000 (training, drills)",
+        "risk_reduction": "30%",
+        "timeline": "1 week pre-scene"
+      },
+      {
+        "priority": "MEDIUM",
+        "recommendation": "Engage local community liaison officers to ensure compliance with cultural, religious, and safety norms during filming in sensitive locations.",
+        "budget_impact": "₹50,000–₹100,000 (liaison, coordination)",
+        "risk_reduction": "25%",
+        "timeline": "1 week pre-scene"
+      }
+    ],
+    "ai_analyzed": true
+  },
+  "LAYER_8_location_optimization": {
+    "location_clusters": [
+      {
+        "location_name": "SCARY HOUSE",
+        "scene_numbers": [
+          "4.2",
+          "4.3",
+          "4.4",
+          "4.9",
+          "4.11",
+          "4.12",
+          "4.13",
+          "4.15",
+          "4.18",
+          "4.24",
+          "4.28",
+          "4.34",
+          "4.35"
+        ],
+        "scene_count": 13,
+        "unoptimized_days": 13,
+        "optimized_days": 4,
+        "setup_overhead_original": 1040000,
+        "setup_overhead_optimized": 192000,
+        "savings": 848000,
+        "efficiency_percent": 81.5,
+        "recommendation": "Consolidate to 4-day shoot (was 13 days) by batching 4 scenes/day"
+      },
+      {
+        "location_name": "COLLEGE HOSTEL ROOM",
+        "scene_numbers": [
+          "6.2",
+          "6.5",
+          "6.12",
+          "9",
+          "10",
+          "10.4",
+          "21.1",
+          "25.1"
+        ],
+        "scene_count": 8,
+        "unoptimized_days": 8,
+        "optimized_days": 3,
+        "setup_overhead_original": 640000,
+        "setup_overhead_optimized": 144000,
+        "savings": 496000,
+        "efficiency_percent": 77.5,
+        "recommendation": "Consolidate to 3-day shoot (was 8 days) by batching 3 scenes/day"
+      },
+      {
+        "location_name": "DIVYAVATHI APARTMENT",
+        "scene_numbers": [
+          "8.4",
+          "10.7",
+          "10.11",
+          "10.15",
+          "10.16",
+          "12",
+          "15.2",
+          "24.3"
+        ],
+        "scene_count": 8,
+        "unoptimized_days": 8,
+        "optimized_days": 3,
+        "setup_overhead_original": 640000,
+        "setup_overhead_optimized": 144000,
+        "savings": 496000,
+        "efficiency_percent": 77.5,
+        "recommendation": "Consolidate to 3-day shoot (was 8 days) by batching 3 scenes/day"
+      },
+      {
+        "location_name": "WOODS",
+        "scene_numbers": [
+          "8.5",
+          "8.11",
+          "10.9",
+          "10.12",
+          "1",
+          "18.1",
+          "18.6",
+          "27.2"
+        ],
+        "scene_count": 8,
+        "unoptimized_days": 8,
+        "optimized_days": 3,
+        "setup_overhead_original": 640000,
+        "setup_overhead_optimized": 144000,
+        "savings": 496000,
+        "efficiency_percent": 77.5,
+        "recommendation": "Consolidate to 3-day shoot (was 8 days) by batching 3 scenes/day"
+      },
+      {
+        "location_name": "RAMACHANDRAPURAM",
+        "scene_numbers": [
+          "4",
+          "4.14",
+          "4.16",
+          "4.17",
+          "4.19"
+        ],
+        "scene_count": 5,
+        "unoptimized_days": 5,
+        "optimized_days": 2,
+        "setup_overhead_original": 400000,
+        "setup_overhead_optimized": 96000,
+        "savings": 304000,
+        "efficiency_percent": 76,
+        "recommendation": "Consolidate to 2-day shoot (was 5 days) by batching 2 scenes/day"
+      },
+      {
+        "location_name": "BRICK MAKING FACTORY",
+        "scene_numbers": [
+          "11",
+          "15.1",
+          "15.4",
+          "15.7"
+        ],
+        "scene_count": 4,
+        "unoptimized_days": 4,
+        "optimized_days": 1,
+        "setup_overhead_original": 320000,
+        "setup_overhead_optimized": 80000,
+        "savings": 240000,
+        "efficiency_percent": 75,
+        "recommendation": "Consolidate to 1-day shoot (was 4 days) by batching 1 scenes/day"
+      },
+      {
+        "location_name": "CELLAR",
+        "scene_numbers": [
+          "8.6",
+          "10.2",
+          "27.9"
+        ],
+        "scene_count": 3,
+        "unoptimized_days": 3,
+        "optimized_days": 1,
+        "setup_overhead_original": 240000,
+        "setup_overhead_optimized": 80000,
+        "savings": 160000,
+        "efficiency_percent": 66.7,
+        "recommendation": "Consolidate to 1-day shoot (was 3 days) by batching 1 scenes/day"
+      },
+      {
+        "location_name": "RETIRED CONSTABLE’S HOUSE",
+        "scene_numbers": [
+          "27.6",
+          "27.7",
+          "27.12"
+        ],
+        "scene_count": 3,
+        "unoptimized_days": 3,
+        "optimized_days": 1,
+        "setup_overhead_original": 240000,
+        "setup_overhead_optimized": 80000,
+        "savings": 160000,
+        "efficiency_percent": 66.7,
+        "recommendation": "Consolidate to 1-day shoot (was 3 days) by batching 1 scenes/day"
+      },
+      {
+        "location_name": "PINKY’S LAB",
+        "scene_numbers": [
+          "29",
+          "29.1",
+          "29.2"
+        ],
+        "scene_count": 3,
+        "unoptimized_days": 3,
+        "optimized_days": 1,
+        "setup_overhead_original": 240000,
+        "setup_overhead_optimized": 80000,
+        "savings": 160000,
+        "efficiency_percent": 66.7,
+        "recommendation": "Consolidate to 1-day shoot (was 3 days) by batching 1 scenes/day"
+      },
+      {
+        "location_name": "FANCY STORE",
+        "scene_numbers": [
+          "4.5",
+          "4.23"
+        ],
+        "scene_count": 2,
+        "unoptimized_days": 2,
+        "optimized_days": 1,
+        "setup_overhead_original": 160000,
+        "setup_overhead_optimized": 80000,
+        "savings": 80000,
+        "efficiency_percent": 50,
+        "recommendation": "Consolidate to 1-day shoot (was 2 days) by batching 1 scenes/day"
+      },
+      {
+        "location_name": "VEGETABLE SHOP",
+        "scene_numbers": [
+          "4.27",
+          "4.30"
+        ],
+        "scene_count": 2,
+        "unoptimized_days": 2,
+        "optimized_days": 1,
+        "setup_overhead_original": 160000,
+        "setup_overhead_optimized": 80000,
+        "savings": 80000,
+        "efficiency_percent": 50,
+        "recommendation": "Consolidate to 1-day shoot (was 2 days) by batching 1 scenes/day"
+      },
+      {
+        "location_name": "COLLEGE CLASS ROOM",
+        "scene_numbers": [
+          "6",
+          "23"
+        ],
+        "scene_count": 2,
+        "unoptimized_days": 2,
+        "optimized_days": 1,
+        "setup_overhead_original": 160000,
+        "setup_overhead_optimized": 80000,
+        "savings": 80000,
+        "efficiency_percent": 50,
+        "recommendation": "Consolidate to 1-day shoot (was 2 days) by batching 1 scenes/day"
+      },
+      {
+        "location_name": "HALLWAY",
+        "scene_numbers": [
+          "8.9",
+          "27"
+        ],
+        "scene_count": 2,
+        "unoptimized_days": 2,
+        "optimized_days": 1,
+        "setup_overhead_original": 160000,
+        "setup_overhead_optimized": 80000,
+        "savings": 80000,
+        "efficiency_percent": 50,
+        "recommendation": "Consolidate to 1-day shoot (was 2 days) by batching 1 scenes/day"
+      },
+      {
+        "location_name": "BALCONY",
+        "scene_numbers": [
+          "10.1",
+          "18.5"
+        ],
+        "scene_count": 2,
+        "unoptimized_days": 2,
+        "optimized_days": 1,
+        "setup_overhead_original": 160000,
+        "setup_overhead_optimized": 80000,
+        "savings": 80000,
+        "efficiency_percent": 50,
+        "recommendation": "Consolidate to 1-day shoot (was 2 days) by batching 1 scenes/day"
+      },
+      {
+        "location_name": "COLLEGE LIBRARY",
+        "scene_numbers": [
+          "10.14",
+          "26"
+        ],
+        "scene_count": 2,
+        "unoptimized_days": 2,
+        "optimized_days": 1,
+        "setup_overhead_original": 160000,
+        "setup_overhead_optimized": 80000,
+        "savings": 80000,
+        "efficiency_percent": 50,
+        "recommendation": "Consolidate to 1-day shoot (was 2 days) by batching 1 scenes/day"
+      },
+      {
+        "location_name": "OLD TEMPLE",
+        "scene_numbers": [
+          "24",
+          "24.1"
+        ],
+        "scene_count": 2,
+        "unoptimized_days": 2,
+        "optimized_days": 1,
+        "setup_overhead_original": 160000,
+        "setup_overhead_optimized": 80000,
+        "savings": 80000,
+        "efficiency_percent": 50,
+        "recommendation": "Consolidate to 1-day shoot (was 2 days) by batching 1 scenes/day"
+      },
+      {
+        "location_name": "HIGHWAY ROAD",
+        "scene_numbers": [
+          "27.3",
+          "27.10"
+        ],
+        "scene_count": 2,
+        "unoptimized_days": 2,
+        "optimized_days": 1,
+        "setup_overhead_original": 160000,
+        "setup_overhead_optimized": 80000,
+        "savings": 80000,
+        "efficiency_percent": 50,
+        "recommendation": "Consolidate to 1-day shoot (was 2 days) by batching 1 scenes/day"
+      },
+      {
+        "location_name": "CAR",
+        "scene_numbers": [
+          "27.4",
+          "27.11"
+        ],
+        "scene_count": 2,
+        "unoptimized_days": 2,
+        "optimized_days": 1,
+        "setup_overhead_original": 160000,
+        "setup_overhead_optimized": 80000,
+        "savings": 80000,
+        "efficiency_percent": 50,
+        "recommendation": "Consolidate to 1-day shoot (was 2 days) by batching 1 scenes/day"
+      },
+      {
+        "location_name": "GRAVEYARD 2",
+        "scene_numbers": [
+          "28",
+          "28.1"
+        ],
+        "scene_count": 2,
+        "unoptimized_days": 2,
+        "optimized_days": 1,
+        "setup_overhead_original": 160000,
+        "setup_overhead_optimized": 80000,
+        "savings": 80000,
+        "efficiency_percent": 50,
+        "recommendation": "Consolidate to 1-day shoot (was 2 days) by batching 1 scenes/day"
+      }
+    ],
+    "total_location_savings": 4160000,
+    "clusters_found": 19,
+    "confidence": 0.92,
+    "ai_used": false,
+    "reasoning": "Identified 19 location clusters by consolidating scattered scenes"
+  },
+  "LAYER_9_stunt_optimization": {
+    "stunt_relocations": [],
+    "total_stunt_savings": 0,
+    "confidence": 0.85,
+    "ai_used": false,
+    "reasoning": "Identified 0 high-risk public stunts that can be moved to controlled studio environments"
+  },
+  "LAYER_10_schedule_optimization": {
+    "total_shooting_days": 31,
+    "total_setup_days": 19,
+    "total_production_days": 32,
+    "time_savings_percent": 72.2,
+    "daily_breakdown": [
+      {
+        "day": 1,
+        "location": "SCARY HOUSE",
+        "scenes": [
+          "4.2",
+          "4.3",
+          "4.4"
+        ],
+        "shot_type": "Setup + Shooting",
+        "setup_time_hours": 8,
+        "shooting_time_hours": 4,
+        "crew_efficiency": "HIGH",
+        "notes": "Full location setup"
+      },
+      {
+        "day": 2,
+        "location": "SCARY HOUSE",
+        "scenes": [
+          "4.9",
+          "4.11",
+          "4.12"
+        ],
+        "shot_type": "Continuation",
+        "setup_time_hours": 0,
+        "shooting_time_hours": 8,
+        "crew_efficiency": "MAX",
+        "notes": "Continue shooting without setup"
+      },
+      {
+        "day": 3,
+        "location": "SCARY HOUSE",
+        "scenes": [
+          "4.13",
+          "4.15",
+          "4.18"
+        ],
+        "shot_type": "Continuation",
+        "setup_time_hours": 0,
+        "shooting_time_hours": 8,
+        "crew_efficiency": "MAX",
+        "notes": "Continue shooting without setup"
+      },
+      {
+        "day": 4,
+        "location": "SCARY HOUSE",
+        "scenes": [
+          "4.24",
+          "4.28",
+          "4.34"
+        ],
+        "shot_type": "Continuation",
+        "setup_time_hours": 0,
+        "shooting_time_hours": 8,
+        "crew_efficiency": "MAX",
+        "notes": "Continue shooting without setup"
+      },
+      {
+        "day": 5,
+        "location": "SCARY HOUSE",
+        "scenes": [
+          "4.35"
+        ],
+        "shot_type": "Continuation",
+        "setup_time_hours": 0,
+        "shooting_time_hours": 8,
+        "crew_efficiency": "MAX",
+        "notes": "Continue shooting without setup"
+      },
+      {
+        "day": 6,
+        "location": "COLLEGE HOSTEL ROOM",
+        "scenes": [
+          "6.2",
+          "6.5",
+          "6.12"
+        ],
+        "shot_type": "Setup + Shooting",
+        "setup_time_hours": 8,
+        "shooting_time_hours": 4,
+        "crew_efficiency": "HIGH",
+        "notes": "Full location setup"
+      },
+      {
+        "day": 7,
+        "location": "COLLEGE HOSTEL ROOM",
+        "scenes": [
+          "9",
+          "10",
+          "10.4"
+        ],
+        "shot_type": "Continuation",
+        "setup_time_hours": 0,
+        "shooting_time_hours": 8,
+        "crew_efficiency": "MAX",
+        "notes": "Continue shooting without setup"
+      },
+      {
+        "day": 8,
+        "location": "COLLEGE HOSTEL ROOM",
+        "scenes": [
+          "21.1",
+          "25.1"
+        ],
+        "shot_type": "Continuation",
+        "setup_time_hours": 0,
+        "shooting_time_hours": 8,
+        "crew_efficiency": "MAX",
+        "notes": "Continue shooting without setup"
+      },
+      {
+        "day": 9,
+        "location": "DIVYAVATHI APARTMENT",
+        "scenes": [
+          "8.4",
+          "10.7",
+          "10.11"
+        ],
+        "shot_type": "Setup + Shooting",
+        "setup_time_hours": 8,
+        "shooting_time_hours": 4,
+        "crew_efficiency": "HIGH",
+        "notes": "Full location setup"
+      },
+      {
+        "day": 10,
+        "location": "DIVYAVATHI APARTMENT",
+        "scenes": [
+          "10.15",
+          "10.16",
+          "12"
+        ],
+        "shot_type": "Continuation",
+        "setup_time_hours": 0,
+        "shooting_time_hours": 8,
+        "crew_efficiency": "MAX",
+        "notes": "Continue shooting without setup"
+      },
+      {
+        "day": 11,
+        "location": "DIVYAVATHI APARTMENT",
+        "scenes": [
+          "15.2",
+          "24.3"
+        ],
+        "shot_type": "Continuation",
+        "setup_time_hours": 0,
+        "shooting_time_hours": 8,
+        "crew_efficiency": "MAX",
+        "notes": "Continue shooting without setup"
+      },
+      {
+        "day": 12,
+        "location": "WOODS",
+        "scenes": [
+          "8.5",
+          "8.11",
+          "10.9"
+        ],
+        "shot_type": "Setup + Shooting",
+        "setup_time_hours": 8,
+        "shooting_time_hours": 4,
+        "crew_efficiency": "HIGH",
+        "notes": "Full location setup"
+      },
+      {
+        "day": 13,
+        "location": "WOODS",
+        "scenes": [
+          "10.12",
+          "1",
+          "18.1"
+        ],
+        "shot_type": "Continuation",
+        "setup_time_hours": 0,
+        "shooting_time_hours": 8,
+        "crew_efficiency": "MAX",
+        "notes": "Continue shooting without setup"
+      },
+      {
+        "day": 14,
+        "location": "WOODS",
+        "scenes": [
+          "18.6",
+          "27.2"
+        ],
+        "shot_type": "Continuation",
+        "setup_time_hours": 0,
+        "shooting_time_hours": 8,
+        "crew_efficiency": "MAX",
+        "notes": "Continue shooting without setup"
+      },
+      {
+        "day": 15,
+        "location": "RAMACHANDRAPURAM",
+        "scenes": [
+          "4",
+          "4.14",
+          "4.16"
+        ],
+        "shot_type": "Setup + Shooting",
+        "setup_time_hours": 8,
+        "shooting_time_hours": 4,
+        "crew_efficiency": "HIGH",
+        "notes": "Full location setup"
+      },
+      {
+        "day": 16,
+        "location": "RAMACHANDRAPURAM",
+        "scenes": [
+          "4.17",
+          "4.19"
+        ],
+        "shot_type": "Continuation",
+        "setup_time_hours": 0,
+        "shooting_time_hours": 8,
+        "crew_efficiency": "MAX",
+        "notes": "Continue shooting without setup"
+      },
+      {
+        "day": 17,
+        "location": "BRICK MAKING FACTORY",
+        "scenes": [
+          "11",
+          "15.1",
+          "15.4"
+        ],
+        "shot_type": "Setup + Shooting",
+        "setup_time_hours": 8,
+        "shooting_time_hours": 4,
+        "crew_efficiency": "HIGH",
+        "notes": "Full location setup"
+      },
+      {
+        "day": 18,
+        "location": "BRICK MAKING FACTORY",
+        "scenes": [
+          "15.7"
+        ],
+        "shot_type": "Continuation",
+        "setup_time_hours": 0,
+        "shooting_time_hours": 8,
+        "crew_efficiency": "MAX",
+        "notes": "Continue shooting without setup"
+      },
+      {
+        "day": 19,
+        "location": "CELLAR",
+        "scenes": [
+          "8.6",
+          "10.2",
+          "27.9"
+        ],
+        "shot_type": "Setup + Shooting",
+        "setup_time_hours": 8,
+        "shooting_time_hours": 4,
+        "crew_efficiency": "HIGH",
+        "notes": "Full location setup"
+      },
+      {
+        "day": 20,
+        "location": "RETIRED CONSTABLE’S HOUSE",
+        "scenes": [
+          "27.6",
+          "27.7",
+          "27.12"
+        ],
+        "shot_type": "Setup + Shooting",
+        "setup_time_hours": 8,
+        "shooting_time_hours": 4,
+        "crew_efficiency": "HIGH",
+        "notes": "Full location setup"
+      },
+      {
+        "day": 21,
+        "location": "PINKY’S LAB",
+        "scenes": [
+          "29",
+          "29.1",
+          "29.2"
+        ],
+        "shot_type": "Setup + Shooting",
+        "setup_time_hours": 8,
+        "shooting_time_hours": 4,
+        "crew_efficiency": "HIGH",
+        "notes": "Full location setup"
+      },
+      {
+        "day": 22,
+        "location": "FANCY STORE",
+        "scenes": [
+          "4.5",
+          "4.23"
+        ],
+        "shot_type": "Setup + Shooting",
+        "setup_time_hours": 8,
+        "shooting_time_hours": 4,
+        "crew_efficiency": "HIGH",
+        "notes": "Full location setup"
+      },
+      {
+        "day": 23,
+        "location": "VEGETABLE SHOP",
+        "scenes": [
+          "4.27",
+          "4.30"
+        ],
+        "shot_type": "Setup + Shooting",
+        "setup_time_hours": 8,
+        "shooting_time_hours": 4,
+        "crew_efficiency": "HIGH",
+        "notes": "Full location setup"
+      },
+      {
+        "day": 24,
+        "location": "COLLEGE CLASS ROOM",
+        "scenes": [
+          "6",
+          "23"
+        ],
+        "shot_type": "Setup + Shooting",
+        "setup_time_hours": 8,
+        "shooting_time_hours": 4,
+        "crew_efficiency": "HIGH",
+        "notes": "Full location setup"
+      },
+      {
+        "day": 25,
+        "location": "HALLWAY",
+        "scenes": [
+          "8.9",
+          "27"
+        ],
+        "shot_type": "Setup + Shooting",
+        "setup_time_hours": 8,
+        "shooting_time_hours": 4,
+        "crew_efficiency": "HIGH",
+        "notes": "Full location setup"
+      },
+      {
+        "day": 26,
+        "location": "BALCONY",
+        "scenes": [
+          "10.1",
+          "18.5"
+        ],
+        "shot_type": "Setup + Shooting",
+        "setup_time_hours": 8,
+        "shooting_time_hours": 4,
+        "crew_efficiency": "HIGH",
+        "notes": "Full location setup"
+      },
+      {
+        "day": 27,
+        "location": "COLLEGE LIBRARY",
+        "scenes": [
+          "10.14",
+          "26"
+        ],
+        "shot_type": "Setup + Shooting",
+        "setup_time_hours": 8,
+        "shooting_time_hours": 4,
+        "crew_efficiency": "HIGH",
+        "notes": "Full location setup"
+      },
+      {
+        "day": 28,
+        "location": "OLD TEMPLE",
+        "scenes": [
+          "24",
+          "24.1"
+        ],
+        "shot_type": "Setup + Shooting",
+        "setup_time_hours": 8,
+        "shooting_time_hours": 4,
+        "crew_efficiency": "HIGH",
+        "notes": "Full location setup"
+      },
+      {
+        "day": 29,
+        "location": "HIGHWAY ROAD",
+        "scenes": [
+          "27.3",
+          "27.10"
+        ],
+        "shot_type": "Setup + Shooting",
+        "setup_time_hours": 8,
+        "shooting_time_hours": 4,
+        "crew_efficiency": "HIGH",
+        "notes": "Full location setup"
+      },
+      {
+        "day": 30,
+        "location": "CAR",
+        "scenes": [
+          "27.4",
+          "27.11"
+        ],
+        "shot_type": "Setup + Shooting",
+        "setup_time_hours": 8,
+        "shooting_time_hours": 4,
+        "crew_efficiency": "HIGH",
+        "notes": "Full location setup"
+      },
+      {
+        "day": 31,
+        "location": "GRAVEYARD 2",
+        "scenes": [
+          "28",
+          "28.1"
+        ],
+        "shot_type": "Setup + Shooting",
+        "setup_time_hours": 8,
+        "shooting_time_hours": 4,
+        "crew_efficiency": "HIGH",
+        "notes": "Full location setup"
+      },
+      {
+        "day": 32,
+        "location": "Various (Reshoots/Contingency)",
+        "scenes": [
+          "TBD"
+        ],
+        "shot_type": "CONTINGENCY",
+        "setup_time_hours": 0,
+        "shooting_time_hours": 8,
+        "crew_efficiency": "HIGH",
+        "notes": "Reserve day for reshoots and contingency coverage"
+      }
+    ],
+    "ai_used": false,
+    "reasoning": "Consolidated 115 scenes into 32 production days (72.2% compression)"
+  },
+  "LAYER_11_department_optimization": {
+    "departments": [
+      {
+        "department": "Art Department",
+        "scale_tier": "mid_budget",
+        "unoptimized_cost": 2660000,
+        "optimized_cost": 1400000,
+        "savings": 1260000,
+        "scaling_factor": 0.5,
+        "recommendation": "Art department minimal overlap between locations (50% savings)"
+      },
+      {
+        "department": "Lighting Head",
+        "scale_tier": "mid_budget",
+        "unoptimized_cost": 2185000,
+        "optimized_cost": 1357000,
+        "savings": 828000,
+        "scaling_factor": 0.6,
+        "recommendation": "Keep gaffer + cinematographer constant, reduce assistants from Day 2 (40% savings)"
+      },
+      {
+        "department": "Grip",
+        "scale_tier": "mid_budget",
+        "unoptimized_cost": 1425000,
+        "optimized_cost": 885000,
+        "savings": 540000,
+        "scaling_factor": 0.6,
+        "recommendation": "Full grip team for setup day, 1 grip + best boy for continuation (40% savings)"
+      },
+      {
+        "department": "Camera Operator",
+        "scale_tier": "mid_budget",
+        "unoptimized_cost": 1710000,
+        "optimized_cost": 1224000,
+        "savings": 486000,
+        "scaling_factor": 0.7,
+        "recommendation": "DP constant, reduce second camera operator (30% savings)"
+      },
+      {
+        "department": "Sound Engineer",
+        "scale_tier": "mid_budget",
+        "unoptimized_cost": 1140000,
+        "optimized_cost": 762000,
+        "savings": 378000,
+        "scaling_factor": 0.65,
+        "recommendation": "Boom operator can cover multiple locations (35% savings)"
+      }
+    ],
+    "total_department_savings": 3492000,
+    "ai_used": false,
+    "reasoning": "Applied consolidation scaling across 5 departments"
+  },
+  "LAYER_12_executive_summary": {
+    "original_budget_min": 5032000,
+    "original_budget_likely": 6290000,
+    "original_budget_max": 9435000,
+    "optimized_budget_min": 0,
+    "optimized_budget_likely": 0,
+    "optimized_budget_max": 1783000,
+    "total_savings": 7652000,
+    "savings_percent": 121.7,
+    "schedule_original_days": 115,
+    "schedule_optimized_days": 32,
+    "schedule_savings_percent": 72.2,
+    "roi_statement": "Budget optimized by 121.7% (₹7,652,000) and schedule compressed by 72.2% (115 → 32 days). Direct ROI through consolidation and smart scheduling."
+  },
+  "generated_at": "2026-01-31T15:02:45.396600",
+  "retrieved_at": "2026-01-31T15:03:34.196001"
+}
