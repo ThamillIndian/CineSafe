@@ -1,33 +1,36 @@
-# 🎬 ShootSafe AI - Film Production Safety & Budgeting System
+# 🎬 CineSafe AI - Film Production Safety & Budgeting System
 
-An intelligent, agent-based system that analyzes film scripts for production risks, budgets, and logistics using LLM-powered agents with human-like decision-making.
+An intelligent, multi-agent system that analyzes film scripts for production risks, budgets, and logistics using **CrewAI orchestration with MCP (Model Context Protocol) server** for standardized tool access and hierarchical agent coordination.
 
 ## 🌟 Key Features
 
 ### **End-to-End Workflow**
 1. **Upload Script** → PDF/DOCX → Automatic text extraction
 2. **Extract Scenes** → Parse into structured scene blocks
-3. **Analyze Intelligently** → 8 specialized agents extract facts + risks + budget
-4. **Dashboard** → Scene breakdown, risk charts, budget ranges, mitigations
-5. **What-If Simulation** → Instant scenario testing (no LLM!)
-6. **Download PDF** → Professional report with all analysis
+3. **Analyze Intelligently** → **9 specialized AI agents** extract facts + risks + budget
+4. **Optimize Budget** → Location clustering, schedule optimization, department scaling
+5. **Dashboard** → Scene breakdown, risk charts, budget ranges, savings analysis
+6. **What-If Simulation** → Instant scenario testing with LLM reasoning
+7. **Download PDF** → Professional report with executive summary
 
-### **3 Key Enhancements (Hackathon Focus)**
+### **Multi-Agent Architecture (CrewAI + MCP)**
 
-**Enhancement #1: Cross-Scene Intelligence** 🔍
-- Project-level inefficiency detection
-- Finds location chains, fatigue clusters, resource bottlenecks
-- Recommends optimal shoot order
+**CrewAI Orchestration:**
+- **Hierarchical coordination** - Manager agent automatically orchestrates all agents
+- **Shared memory** - Agents collaborate and share context
+- **Self-correction** - Agents can retry and refine outputs (max_iter=3)
+- **Intelligent collaboration** - Agents can ask each other questions
 
-**Enhancement #2: Risk Amplification** ⚠️
-- Detects dangerous feature combinations
-- Night + Water + Stunts = 1.4x risk amplification
-- Explainable risk scoring
-
-**Enhancement #3: Confidence & Uncertainty** 📊
-- Every field gets confidence score
-- Budget ranges (min/likely/max) based on uncertainty
-- Producer can clarify low-confidence fields
+**MCP Server (Model Context Protocol):**
+- **Standardized tool access** - All agents access tools through MCP protocol
+- **5 core tools registered:**
+  - `gemini_call` - LLM access for AI-powered analysis
+  - `load_dataset` - Dataset loading from CSV files
+  - `extract_json` - JSON extraction and parsing
+  - `get_risk_amplifiers` - Risk calculation data
+  - `validate_json_schema` - Output validation
+- **Industry standard** - Based on Anthropic/OpenAI MCP specification
+- **Centralized resource management** - Single source of truth for tools
 
 ## 🏗️ Architecture
 
@@ -36,12 +39,22 @@ Frontend (React)
     ↓
 FastAPI Backend (Python)
     ↓
-Celery Workers (8 Specialized Agents)
+CrewAI Orchestrator (Manager Agent)
     ↓
-├─ PostgreSQL (Data)
-├─ Redis (Queue)
-├─ Qdrant (RAG Vector DB)
-└─ Gemini API (LLM)
+MCP Server (Tool Registry)
+    ↓
+9 Specialized Agents
+├─ Scene Extractor Agent
+├─ Risk Scorer Agent
+├─ Budget Estimator Agent
+├─ Cross-Scene Auditor Agent
+├─ Mitigation Planner Agent
+├─ Location Clusterer Agent
+├─ Stunt Location Analyzer Agent
+├─ Schedule Optimizer Agent
+└─ Department Scaler Agent
+    ↓
+SQLite Database (Results Storage)
 ```
 
 ## 📁 Project Structure
@@ -50,185 +63,227 @@ Celery Workers (8 Specialized Agents)
 backend/
 ├── app/
 │   ├── api/v1/              # FastAPI endpoints
-│   ├── agents/              # 8 agent modules
-│   │   ├── orchestrator.py  # Supervisor
-│   │   ├── scene_extractor.py
-│   │   ├── risk_scorer.py        # Enhancement #2
-│   │   ├── budget_estimator.py   # Enhancement #3
-│   │   ├── cross_scene_auditor.py # Enhancement #1
+│   │   ├── uploads.py       # Script upload
+│   │   ├── runs.py          # Pipeline execution
+│   │   ├── results.py        # Results retrieval
+│   │   ├── whatif.py         # What-If analysis
+│   │   └── reports.py        # PDF generation
+│   ├── agents/              # 9 agent modules
+│   │   ├── full_ai_orchestrator.py  # Main orchestrator (9 agents)
+│   │   ├── crew_orchestrator.py     # CrewAI orchestrator (MCP)
+│   │   ├── crew_agents.py           # CrewAI agent definitions
+│   │   ├── crew_tasks.py            # CrewAI task definitions
+│   │   ├── optimization_agents.py   # 4 optimization agents
 │   │   └── ...
-│   ├── datasets/
-│   │   └── data/            # 5 CSV files (rate cards, multipliers, etc.)
+│   ├── utils/
+│   │   ├── mcp_server.py    # MCP Server implementation
+│   │   ├── mcp_tools.py     # MCP tool registration
+│   │   └── llm_client.py    # Qwen3/Gemini clients
 │   ├── models/
 │   │   ├── database.py      # SQLAlchemy models
 │   │   └── schemas.py       # Pydantic schemas
-│   ├── utils/               # Helpers, constants, LLM client
 │   └── main.py             # FastAPI app entry
-├── workers/
-│   ├── celery_app.py        # Celery config
-│   └── tasks.py             # Celery tasks
 ├── requirements.txt
-├── Dockerfile
-└── docker-compose.yml       # Local development setup
+└── docker-compose.yml
 
-frontend/                     # React app (separate)
-docs/                        # API docs, guides
+frontend/                     # React app
+├── src/
+│   ├── pages/
+│   │   ├── Home.jsx         # Upload interface
+│   │   ├── Analysis.jsx     # Scene analysis
+│   │   ├── ExecutiveReport.jsx  # Executive summary
+│   │   └── WhatIfAnalysis.jsx   # What-If scenarios
+│   └── services/
+│       └── api.js           # API client
 ```
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 - Python 3.10+
-- Docker & Docker Compose (recommended)
-- Gemini API key
-- PostgreSQL 15 (or use Docker)
+- Node.js 18+ (for frontend)
+- SQLite (included with Python)
 
-### Option 1: Docker (Recommended)
-
-```bash
-# 1. Set environment
-export GEMINI_API_KEY="your_key_here"
-
-# 2. Start services
-docker-compose up -d
-
-# 3. Wait for services to be healthy
-docker-compose ps
-
-# 4. Access the app
-- Backend: http://localhost:8000
-- API Docs: http://localhost:8000/docs
-- Celery Flower: http://localhost:5555
-```
-
-### Option 2: Local Development
+### Backend Setup
 
 ```bash
 # 1. Install dependencies
 cd backend
 pip install -r requirements.txt
 
-# 2. Start PostgreSQL & Redis separately (or use Docker just for those)
-docker-compose up postgres redis qdrant -d
+# 2. Set environment variables
+export LLM_PROVIDER="qwen3"  # or "gemini"
+export QWEN3_BASE_URL="http://localhost:1234/v1"
+export GEMINI_API_KEY="your_key_here"  # if using Gemini
 
-# 3. Set environment
-export DATABASE_URL="postgresql://shootsafe:shootsafe@localhost:5432/shootsafe_db"
-export REDIS_URL="redis://localhost:6379/0"
-export GEMINI_API_KEY="your_key_here"
-
-# 4. Run migrations
-alembic upgrade head
-
-# 5. Start API (terminal 1)
-uvicorn app.main:app --reload
-
-# 6. Start Celery worker (terminal 2)
-celery -A workers.celery_app worker --loglevel=info
-
-# 7. Start Flower (terminal 3, optional)
-celery -A workers.celery_app flower
+# 3. Start API server
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-## 📊 Database
+### Frontend Setup
+
+```bash
+# 1. Install dependencies
+cd frontend
+npm install
+
+# 2. Start development server
+npm run dev
+```
+
+### Access the Application
+- **Frontend:** http://localhost:5173
+- **Backend API:** http://localhost:8000
+- **API Docs:** http://localhost:8000/docs
+
+## 📊 Database Schema
 
 **Core Tables:**
-- `projects` → Project metadata
-- `documents` → Uploaded scripts
-- `runs` → Pipeline executions (versioning)
-- `scenes` → Parsed scenes
-- `scene_extractions` → LLM extraction output with confidence
-- `scene_risks` → Risk scores (includes amplification)
-- `scene_costs` → Budget estimates (includes ranges)
+- `documents` → Uploaded scripts (PDF/DOCX)
+- `runs` → Pipeline executions with results
+- `scenes` → Parsed scene data
+- `scene_extractions` → AI extraction output with confidence scores
+- `scene_risks` → 5-pillar risk scores (Safety, Logistics, Schedule, Budget, Compliance)
+- `scene_costs` → Budget estimates (min/likely/max ranges)
 - `cross_scene_insights` → Project-level inefficiencies
-- `project_summaries` → Aggregated results JSON
-- `jobs` → Worker task tracking
-- `decisions` → Producer edits/what-ifs
-- `assumptions` → Locked constraints
+- `reports` → Generated PDF reports
 
-## 📊 Datasets (The Deterministic Brain)
+## 🤖 The 9 Specialized Agents
+
+### **Core Analysis Agents (5)**
+
+| Agent | Purpose | Method | Output |
+|-------|---------|--------|--------|
+| **Scene Extractor** | Parse script into scenes | LLM (Qwen3/Gemini) + Regex fallback | Scene blocks with metadata |
+| **Risk Scorer** | Multi-dimensional risk assessment | LLM for high-risk, templates for others | 5 risk scores (0-30 each) |
+| **Budget Estimator** | Cost estimation per scene | LLM for complex, rate cards for standard | Cost ranges (min/likely/max) |
+| **Cross-Scene Auditor** | Pattern detection across scenes | LLM + Rule-based | Location chains, fatigue clusters |
+| **Mitigation Planner** | Generate recommendations | LLM + Templates | Actionable safety recommendations |
+
+### **Optimization Agents (4)**
+
+| Agent | Purpose | Method | Output |
+|-------|---------|--------|--------|
+| **Location Clusterer** | Group scenes by location | Deterministic clustering | Location clusters, setup savings (max 15%) |
+| **Stunt Location Analyzer** | Analyze stunt relocations | Rule-based + AI | Safer alternatives, cost savings (max 8%) |
+| **Schedule Optimizer** | Optimize shooting schedule | Deterministic algorithm | Day-by-day schedule, compression (max 25%) |
+| **Department Scaler** | Optimize crew sizing | Rate card calculations | Department scaling, savings (max 12%) |
+
+**Total Budget Optimization Potential:** Up to 30% savings with realistic caps
+
+## 🔌 API Endpoints
+
+### Scripts
+- `POST /api/v1/scripts/upload` - Upload PDF/DOCX script
+- `GET /api/v1/scripts/{document_id}` - Get document details
+- `DELETE /api/v1/scripts/{document_id}` - Delete document
+
+### Runs (Pipeline Execution)
+- `POST /api/v1/runs/{document_id}/start` - Start analysis pipeline
+- `GET /api/v1/runs/{run_id}/status` - Get execution status
+- `GET /api/v1/runs/document/{document_id}` - Get run by document
+
+### Results
+- `GET /api/v1/results/{run_id}` - Get complete analysis results
+- `GET /api/v1/results/{run_id}/scenes` - Get scene breakdown
+- `GET /api/v1/results/{run_id}/risks` - Get risk analysis
+- `GET /api/v1/results/{run_id}/budget` - Get budget analysis
+- `GET /api/v1/results/{run_id}/insights` - Get cross-scene insights
+
+### What-If Analysis
+- `POST /api/v1/whatif/{run_id}` - Run custom scenario
+- `POST /api/v1/whatif/{run_id}/presets/{preset_name}` - Run preset scenario
+  - Presets: `budget_cut_20`, `accelerate_timeline`, `max_safety`
+- `GET /api/v1/whatif/{run_id}/history` - Get scenario history
+
+### Reports
+- `POST /api/v1/reports/{run_id}/generate` - Generate PDF report
+- `GET /api/v1/reports/{run_id}/download` - Download PDF report
+- `GET /api/v1/reports` - List all reports
+
+## 📈 Complete Pipeline Flow
+
+```
+1. User uploads script (PDF/DOCX)
+   ↓
+2. Backend extracts text, creates Document record
+   ↓
+3. User starts analysis → Creates Run record
+   ↓
+4. FullAIEnhancedOrchestrator executes 9 agents:
+   
+   TIER 1: Scene Extraction
+   ├─ SceneExtractorAgent → Extracts scenes from script
+   
+   TIER 2: Analysis
+   ├─ RiskScorerAgent → Calculates 5-pillar risk scores
+   └─ BudgetEstimatorAgent → Estimates cost ranges
+   
+   TIER 3: Intelligence
+   ├─ CrossSceneAuditorAgent → Finds patterns & inefficiencies
+   └─ MitigationPlannerAgent → Generates recommendations
+   
+   TIER 4: Optimization
+   ├─ LocationClustererAgent → Groups locations, saves setup costs
+   ├─ StuntLocationAnalyzerAgent → Suggests safer locations
+   ├─ ScheduleOptimizerAgent → Optimizes shooting schedule
+   └─ DepartmentScalerAgent → Right-sizes crew departments
+   ↓
+5. Results stored in database:
+   ├─ Run.enhanced_result_json (complete result)
+   ├─ Scene records (one per scene)
+   ├─ SceneExtraction (extraction data)
+   ├─ SceneRisk (risk scores)
+   ├─ SceneCost (budget estimates)
+   └─ CrossSceneInsight (pattern insights)
+   ↓
+6. Frontend polls for results → Displays in Analysis page
+   ↓
+7. User can:
+   ├─ View Executive Report (savings, recommendations)
+   ├─ Run What-If scenarios (budget cuts, timeline changes)
+   └─ Generate PDF report (professional documentation)
+```
+
+## 🎯 Key Technical Highlights
+
+### **CrewAI Integration**
+- **Hierarchical Process:** Manager agent automatically coordinates all agents
+- **Shared Memory:** Agents share context and can reference previous work
+- **Self-Correction:** Agents retry up to 3 times if output validation fails
+- **Collaborative Reasoning:** Agents can ask each other questions
+
+### **MCP Server (Model Context Protocol)**
+- **Standardized Tool Access:** All agents use MCP protocol for tool calls
+- **5 Registered Tools:** gemini_call, load_dataset, extract_json, get_risk_amplifiers, validate_json_schema
+- **Centralized Management:** Single source of truth for all tools
+- **Industry Standard:** Based on Anthropic/OpenAI MCP specification
+
+### **Safety & Reliability**
+- **AIAgentSafetyLayer:** Wraps all agent calls with error handling
+- **Synthetic Data Fallbacks:** Generates default data if extraction fails
+- **Realistic Caps:** Prevents unrealistic savings (location: 15%, stunt: 8%, department: 12%, schedule: 25%)
+- **Eager Loading:** Prevents async database errors with SQLAlchemy
+
+### **LLM Integration**
+- **Dual LLM Support:** Qwen3 (local) or Gemini (cloud)
+- **Intelligent Routing:** Uses LLM for complex scenes, templates for standard
+- **Context-Aware Reasoning:** LLM receives full scene context for What-If analysis
+
+## 📊 Datasets
 
 5 CSV files in `backend/app/datasets/data/`:
-
-1. **rate_card.csv** → Department costs by scale
-2. **city_state_multipliers.csv** → Regional cost/permit/logistics multipliers
+1. **rate_card.csv** → Department costs by scale (Indie/Mid/Big Budget)
+2. **city_state_multipliers.csv** → Regional cost multipliers
 3. **complexity_multipliers.csv** → Scene feature → cost/risk multipliers
-4. **risk_weights.csv** → Feature → risk pillar points (0-30 each)
+4. **risk_weights.csv** → Feature → risk pillar points
 5. **location_library.csv** → Location type → permit tier, complexity
 
 **Why CSV files?**
 - Deterministic (no hallucination)
 - Reproducible (same input = same output)
-- Auditable (producer can see exactly how number was calculated)
+- Auditable (producer can see calculations)
 - Easy to update (no code changes needed)
-
-## 🤖 The 8 Agents
-
-| # | Agent | Input | Output | Type |
-|---|-------|-------|--------|------|
-| 0 | **Orchestrator** | Job request | Pipeline execution | Supervisor |
-| 1 | **Scene Splitter** | Raw text | Scene blocks | Code |
-| 2 | **Scene Extractor** | Scene text | JSON + evidence + confidence | LLM |
-| 3 | **Validator/Repair** | Broken extraction | Fixed JSON | LLM |
-| 4 | **Risk Scorer** | Features | Scores + amplification | Code (Enh #2) |
-| 5 | **Budget Estimator** | Features + confidence | Min/likely/max ranges | Code (Enh #3) |
-| 6 | **Cross-Scene Auditor** | All scenes | Project insights | LLM (Enh #1) |
-| 7 | **Mitigation Planner** | Risks + RAG | Checklists + recommendations | LLM + RAG |
-| 8 | **Executive Summary** | All data | Producer-friendly summary | LLM |
-
-## 🔌 API Endpoints
-
-```
-POST   /api/v1/projects              # Create project
-GET    /api/v1/projects/{id}         # Get project
-
-POST   /api/v1/projects/{id}/upload  # Upload script
-
-POST   /api/v1/projects/{id}/run     # Start pipeline
-GET    /api/v1/projects/{id}/status  # Monitor progress
-
-GET    /api/v1/projects/{id}/results # Dashboard JSON
-
-POST   /api/v1/projects/{id}/whatif  # What-If simulation
-
-GET    /api/v1/projects/{id}/report.pdf # Download PDF
-```
-
-## 📈 Example Flow
-
-```
-1. Producer uploads "Dhoom 5" script
-   ↓
-2. Backend extracts 28 scenes + metadata
-   ↓
-3. Risk Scorer processes each scene + detects 4 risky combinations
-   ↓
-4. Budget Estimator calculates ₹2.1M-₹3.2M range (uncertainty included)
-   ↓
-5. Cross-Scene Auditor finds: "Scenes 5, 18, 12 at same location but days 2, 15, 8"
-   Recommendation: Reorder to 18, 5, 12 → saves ₹150K + 1 day
-   ↓
-6. Mitigation Planner suggests safety checks for stunt clusters
-   ↓
-7. Dashboard shows scene table + risk heatmap + budget pie chart
-   ↓
-8. Producer tweaks: "What if we move water scene to day shoot?"
-   System: "Cost drops ₹100K, Risk falls 25 points" (INSTANT!)
-   ↓
-9. Producer clicks Download → PDF report generated
-```
-
-## 🎯 Definition of Done
-
-✅ Upload script → scenes in DB  
-✅ Run pipeline → results JSON with:
-   - Scene breakdown (with evidence + confidence scores)
-   - Risk scores (with amplification explained)
-   - Budget ranges (min/likely/max)
-   - Cross-scene insights (location chains, fatigue, etc.)
-   - Mitigation recommendations  
-✅ What-if endpoint → instant deltas  
-✅ PDF endpoint → professional report  
-✅ Dataset validator passes  
 
 ## 🛠️ Development
 
@@ -243,29 +298,31 @@ pytest tests/
 python -m app.datasets.validator
 ```
 
-### Create Migration
+### Database Migrations
 ```bash
+# Create migration
 alembic revision --autogenerate -m "description"
+
+# Apply migration
 alembic upgrade head
 ```
 
 ## 📝 Environment Variables
 
 ```bash
+# LLM Configuration
+LLM_PROVIDER=qwen3  # or "gemini"
+QWEN3_BASE_URL=http://localhost:1234/v1
+QWEN3_MODEL=Qwen/Qwen2.5-VL-7B-Instruct
+GEMINI_API_KEY=your_key_here  # if using Gemini
+
 # Database
-DATABASE_URL=postgresql+asyncpg://shootsafe:shootsafe@localhost:5432/shootsafe_db
+DATABASE_URL=sqlite+aiosqlite:///./shootsafe.db
 
-# Redis
-REDIS_URL=redis://localhost:6379/0
-
-# Gemini LLM
-GEMINI_API_KEY=your_key_here
-GEMINI_MODEL=gemini-1.5-pro
-GEMINI_REQUEST_DELAY=1.2
-
-# Features
-PARAPHRASE_ENABLED=true
-EXTRACT_SELF_CONSISTENCY=true
+# API
+API_HOST=0.0.0.0
+API_PORT=8000
+API_DEBUG=true
 
 # Storage
 STORAGE_PATH=./storage
@@ -275,6 +332,35 @@ UPLOAD_MAX_SIZE_MB=100
 LOG_LEVEL=INFO
 ```
 
+## 🎯 Definition of Done
+
+✅ Upload script → scenes extracted and stored  
+✅ Run pipeline → 9 agents execute sequentially  
+✅ Results stored → Complete analysis in database  
+✅ Executive summary → Budget savings, schedule compression, recommendations  
+✅ What-If analysis → Scenario simulation with LLM reasoning  
+✅ PDF reports → Professional documentation with all insights  
+✅ CrewAI integration → Hierarchical agent coordination  
+✅ MCP server → Standardized tool access for all agents  
+
+## 🚢 Deployment
+
+### Production Checklist
+- [ ] Set `API_DEBUG=false`
+- [ ] Configure production database (PostgreSQL recommended)
+- [ ] Set up LLM API keys securely
+- [ ] Configure CORS for frontend domain
+- [ ] Set up file storage (S3 or similar)
+- [ ] Enable logging and monitoring
+- [ ] Set up backup strategy
+
+## 📚 Documentation
+
+- **Pipeline Flow:** See complete agent workflow above
+- **API Reference:** http://localhost:8000/docs (Swagger UI)
+- **Agent Architecture:** See "The 9 Specialized Agents" section
+- **MCP Tools:** See `backend/app/utils/mcp_tools.py`
+
 ## 🤝 Contributing
 
 1. Create feature branch: `git checkout -b feature/my-feature`
@@ -282,31 +368,16 @@ LOG_LEVEL=INFO
 3. Test thoroughly
 4. Submit PR with description
 
-## 📚 Documentation
-
-- `docs/API_SPEC.md` → API reference
-- `docs/DATASET_GUIDE.md` → How to update datasets
-- `docs/AGENT_PROMPTS.md` → All LLM prompts
-- `docs/DEPLOYMENT.md` → Production setup
-
-## 🚢 Deployment
-
-See `docs/DEPLOYMENT.md` for:
-- Docker Swarm deployment
-- Kubernetes setup
-- Cloud provider options (AWS, GCP, Azure)
-- Scaling considerations
-
 ## 📄 License
 
 MIT License - See LICENSE file
 
 ## 👥 Team
 
-ShootSafe AI - Hackathon Project
+CineSafe AI - Hackathon Project
 
 ---
 
-**Questions? Issues? Star this repo!** ⭐
+**Built with CrewAI orchestration and MCP server for enterprise-grade multi-agent coordination!** 🚀
 
 🏴‍☠️ Built with love for film producers everywhere!
