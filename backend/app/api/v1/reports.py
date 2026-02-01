@@ -5,13 +5,14 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.responses import FileResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
+from sqlalchemy.orm import selectinload
 import logging
 from pathlib import Path
 from datetime import datetime
 import json
 
 from app.database import get_db
-from app.models.database import Run, Report, Project, RunStatus
+from app.models.database import Run, Report, Project, RunStatus, Scene, SceneExtraction, SceneRisk, SceneCost, CrossSceneInsight
 from app.config import settings
 
 logger = logging.getLogger(__name__)
@@ -24,7 +25,7 @@ REPORTS_DIR.mkdir(parents=True, exist_ok=True)
 
 async def generate_pdf_report(run_id: str, session: AsyncSession) -> str:
     """
-    Generate PDF report for a run
+    Generate comprehensive PDF report for a run with all analysis data
     Returns: Path to generated PDF
     """
     try:
@@ -35,16 +36,71 @@ async def generate_pdf_report(run_id: str, session: AsyncSession) -> str:
         from reportlab.lib.units import inch
         from reportlab.lib import colors
         
-        # Get run and project details
+        # Get run details with scenes relationship eagerly loaded
         run_result = await session.execute(
-            select(Run).where(Run.id == run_id)
+            select(Run)
+            .options(selectinload(Run.scenes))  # Eagerly load scenes to avoid async greenlet error
+            .where(Run.id == run_id)
         )
         run = run_result.scalars().first()
         
-        project_result = await session.execute(
-            select(Project).where(Project.id == run.project_id)
+        if not run:
+            raise ValueError(f"Run {run_id} not found")
+        
+        # Parse enhanced result JSON
+        enhanced_data = run.enhanced_result_json or {}
+        executive_summary = enhanced_data.get("LAYER_12_executive_summary", {})
+        scenes_analysis = enhanced_data.get("scenes_analysis", {})
+        risk_intelligence = enhanced_data.get("risk_intelligence", {})
+        production_recommendations = enhanced_data.get("production_recommendations", {})
+        
+        # Fetch all scenes with their data
+        scenes_result = await session.execute(
+            select(Scene).where(Scene.run_id == run_id).order_by(Scene.scene_number)
         )
-        project = project_result.scalars().first()
+        all_scenes = scenes_result.scalars().all()
+        
+        # Fetch scene data (extractions, risks, costs)
+        scene_data_list = []
+        for scene in all_scenes:
+            extraction_result = await session.execute(
+                select(SceneExtraction).where(SceneExtraction.scene_id == scene.id)
+            )
+            extraction = extraction_result.scalars().first()
+            
+            risk_result = await session.execute(
+                select(SceneRisk).where(SceneRisk.scene_id == scene.id)
+            )
+            risk = risk_result.scalars().first()
+            
+            cost_result = await session.execute(
+                select(SceneCost).where(SceneCost.scene_id == scene.id)
+            )
+            cost = cost_result.scalars().first()
+            
+            scene_data_list.append({
+                'scene': scene,
+                'extraction': extraction,
+                'risk': risk,
+                'cost': cost
+            })
+        
+        # Fetch cross-scene insights
+        insights_result = await session.execute(
+            select(CrossSceneInsight).where(CrossSceneInsight.run_id == run_id)
+        )
+        insights = insights_result.scalars().all()
+        
+        # Helper function to format currency
+        def format_currency(amount):
+            if amount is None or amount == 0:
+                return "₹0"
+            if amount >= 10000000:  # >= 1 crore
+                return f"₹{amount/10000000:.2f}Cr"
+            elif amount >= 100000:  # >= 1 lakh
+                return f"₹{amount/100000:.2f}L"
+            else:
+                return f"₹{amount:,.0f}"
         
         # Create PDF
         pdf_filename = f"shootsafe_report_{run_id}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf"
@@ -73,9 +129,18 @@ async def generate_pdf_report(run_id: str, session: AsyncSession) -> str:
             spaceBefore=12
         )
         
+        subheading_style = ParagraphStyle(
+            'CustomSubHeading',
+            parent=styles['Heading3'],
+            fontSize=12,
+            textColor=colors.HexColor('#2E5C8A'),
+            spaceAfter=8,
+            spaceBefore=8
+        )
+        
         elements = []
         
-        # Title
+        # ========== TITLE PAGE ==========
         elements.append(Paragraph("ShootSafe AI - Production Analysis Report", title_style))
         elements.append(Spacer(1, 0.3*inch))
         
@@ -83,10 +148,10 @@ async def generate_pdf_report(run_id: str, session: AsyncSession) -> str:
         elements.append(Paragraph("Project Information", heading_style))
         
         project_info = [
-            ["Project Name:", project.name],
-            ["Location:", project.base_city],
-            ["Scale:", project.scale.value],
-            ["Language:", project.language],
+            ["Project Name:", "Film Production"],
+            ["Location:", "India"],
+            ["Scale:", "Standard"],
+            ["Language:", "English"],
             ["Report Generated:", datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")]
         ]
         
@@ -107,50 +172,267 @@ async def generate_pdf_report(run_id: str, session: AsyncSession) -> str:
         # Analysis Summary
         elements.append(Paragraph("Analysis Summary", heading_style))
         
+        total_scenes = len(all_scenes) if all_scenes else 0
+        high_risk_count = risk_intelligence.get("high_risk_count", 0)
+        
         summary_text = f"""
         <b>Run ID:</b> {run.id[:8]}... <br/>
-        <b>Run Number:</b> {run.run_number} <br/>
-        <b>Status:</b> {run.status.value.upper()} <br/>
-        <b>Total Scenes:</b> {len(run.scenes) if run.scenes else 0} <br/>
+        <b>Status:</b> {run.status.value.upper() if run.status else 'UNKNOWN'} <br/>
+        <b>Total Scenes:</b> {total_scenes} <br/>
+        <b>High-Risk Scenes:</b> {high_risk_count} <br/>
         <b>Started:</b> {run.started_at.strftime('%Y-%m-%d %H:%M:%S') if run.started_at else 'N/A'} <br/>
         <b>Completed:</b> {run.completed_at.strftime('%Y-%m-%d %H:%M:%S') if run.completed_at else 'N/A'} <br/>
         """
         
         elements.append(Paragraph(summary_text, styles['Normal']))
-        elements.append(Spacer(1, 0.3*inch))
+        elements.append(PageBreak())
         
-        # Key Findings
-        elements.append(Paragraph("Key Findings", heading_style))
+        # ========== EXECUTIVE SUMMARY ==========
+        elements.append(Paragraph("Executive Summary", heading_style))
         
-        findings = [
-            "✓ Script analysis completed successfully",
-            "✓ Risk assessment generated for all scenes",
-            "✓ Budget estimation provided with min/likely/max ranges",
-            "✓ Cross-scene inefficiencies identified",
-            "✓ Safety recommendations included"
+        original_budget = executive_summary.get("original_budget_likely", run.optimized_budget_likely or 0)
+        optimized_budget = executive_summary.get("optimized_budget_likely", run.optimized_budget_likely or 0)
+        total_savings = executive_summary.get("total_savings", run.total_optimization_savings or 0)
+        savings_percent = executive_summary.get("savings_percent", 0)
+        schedule_original = executive_summary.get("schedule_original_days", 0)
+        schedule_optimized = executive_summary.get("schedule_optimized_days", 0)
+        schedule_compression = executive_summary.get("schedule_savings_percent", run.schedule_savings_percent or 0)
+        
+        exec_summary_data = [
+            ["Metric", "Value"],
+            ["Original Budget (Likely)", format_currency(original_budget)],
+            ["Optimized Budget (Likely)", format_currency(optimized_budget)],
+            ["Total Savings", format_currency(total_savings)],
+            ["Savings Percentage", f"{savings_percent:.1f}%"],
+            ["Original Schedule", f"{schedule_original} days"],
+            ["Optimized Schedule", f"{schedule_optimized} days"],
+            ["Schedule Compression", f"{schedule_compression:.1f}%"],
         ]
         
-        for finding in findings:
-            elements.append(Paragraph(finding, styles['Normal']))
-            elements.append(Spacer(1, 0.1*inch))
+        exec_table = Table(exec_summary_data, colWidths=[3*inch, 3*inch])
+        exec_table.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#1F4788')),
+            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+            ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+            ('FONTSIZE', (0, 0), (-1, 0), 12),
+            ('FONTSIZE', (0, 1), (-1, -1), 10),
+            ('BOTTOMPADDING', (0, 0), (-1, -1), 12),
+            ('TOPPADDING', (0, 0), (-1, -1), 12),
+            ('GRID', (0, 0), (-1, -1), 1, colors.grey),
+            ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.white, colors.lightgrey])
+        ]))
+        
+        elements.append(exec_table)
+        elements.append(Spacer(1, 0.3*inch))
+        
+        # ========== BUDGET ANALYSIS ==========
+        elements.append(Paragraph("Budget Analysis", heading_style))
+        
+        budget_min = executive_summary.get("optimized_budget_min", run.optimized_budget_min or 0)
+        budget_likely = optimized_budget
+        budget_max = executive_summary.get("optimized_budget_max", run.optimized_budget_max or 0)
+        
+        budget_data = [
+            ["Budget Type", "Amount"],
+            ["Minimum Budget", format_currency(budget_min)],
+            ["Likely Budget", format_currency(budget_likely)],
+            ["Maximum Budget", format_currency(budget_max)],
+            ["Budget Range", format_currency(budget_max - budget_min)],
+        ]
+        
+        budget_table = Table(budget_data, colWidths=[3*inch, 3*inch])
+        budget_table.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#2E5C8A')),
+            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+            ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+            ('FONTSIZE', (0, 0), (-1, 0), 11),
+            ('FONTSIZE', (0, 1), (-1, -1), 10),
+            ('BOTTOMPADDING', (0, 0), (-1, -1), 10),
+            ('GRID', (0, 0), (-1, -1), 1, colors.grey)
+        ]))
+        
+        elements.append(budget_table)
+        elements.append(Spacer(1, 0.3*inch))
+        
+        # ========== RISK ASSESSMENT ==========
+        elements.append(Paragraph("Risk Assessment", heading_style))
+        
+        # High-risk scenes
+        high_risk_scenes = []
+        for scene_data in scene_data_list:
+            if scene_data['risk'] and scene_data['risk'].total_risk_score > 65:
+                high_risk_scenes.append({
+                    'number': scene_data['scene'].scene_number,
+                    'heading': scene_data['scene'].heading or 'N/A',
+                    'risk_score': scene_data['risk'].total_risk_score,
+                    'location': scene_data['scene'].location or 'N/A'
+                })
+        
+        if high_risk_scenes:
+            elements.append(Paragraph(f"High-Risk Scenes ({len(high_risk_scenes)})", subheading_style))
+            
+            risk_table_data = [["Scene", "Heading", "Risk Score", "Location"]]
+            for hr in high_risk_scenes[:10]:  # Limit to top 10
+                risk_table_data.append([
+                    str(hr['number']),
+                    hr['heading'][:30] + '...' if len(hr['heading']) > 30 else hr['heading'],
+                    f"{hr['risk_score']:.0f}",
+                    hr['location'][:20] + '...' if len(hr['location']) > 20 else hr['location']
+                ])
+            
+            risk_table = Table(risk_table_data, colWidths=[0.8*inch, 2*inch, 1*inch, 2.2*inch])
+            risk_table.setStyle(TableStyle([
+                ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#DC2626')),
+                ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+                ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+                ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+                ('FONTSIZE', (0, 0), (-1, -1), 9),
+                ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
+                ('GRID', (0, 0), (-1, -1), 1, colors.grey)
+            ]))
+            
+            elements.append(risk_table)
+        else:
+            elements.append(Paragraph("No high-risk scenes identified.", styles['Normal']))
         
         elements.append(Spacer(1, 0.3*inch))
         
-        # Recommendations
+        # ========== SCHEDULE OPTIMIZATION ==========
+        elements.append(Paragraph("Schedule Optimization", heading_style))
+        
+        schedule_data = [
+            ["Metric", "Value"],
+            ["Original Schedule", f"{schedule_original} days"],
+            ["Optimized Schedule", f"{schedule_optimized} days"],
+            ["Days Saved", f"{schedule_original - schedule_optimized} days"],
+            ["Compression Percentage", f"{schedule_compression:.1f}%"],
+        ]
+        
+        schedule_table = Table(schedule_data, colWidths=[3*inch, 3*inch])
+        schedule_table.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#059669')),
+            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+            ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+            ('FONTSIZE', (0, 0), (-1, -1), 10),
+            ('BOTTOMPADDING', (0, 0), (-1, -1), 10),
+            ('GRID', (0, 0), (-1, -1), 1, colors.grey)
+        ]))
+        
+        elements.append(schedule_table)
+        elements.append(PageBreak())
+        
+        # ========== SCENE-BY-SCENE ANALYSIS ==========
+        elements.append(Paragraph("Scene-by-Scene Analysis", heading_style))
+        
+        # Limit to first 20 scenes to avoid PDF being too large
+        scenes_to_show = scene_data_list[:20]
+        
+        scene_table_data = [["Scene", "Location", "Budget (Likely)", "Risk Score", "Status"]]
+        for scene_data in scenes_to_show:
+            scene = scene_data['scene']
+            cost = scene_data['cost']
+            risk = scene_data['risk']
+            
+            budget_val = format_currency(cost.cost_likely) if cost and cost.cost_likely else "N/A"
+            risk_val = f"{risk.total_risk_score:.0f}" if risk and risk.total_risk_score else "N/A"
+            location = scene.location or "N/A"
+            status = "High Risk" if (risk and risk.total_risk_score > 65) else "Normal"
+            
+            scene_table_data.append([
+                str(scene.scene_number),
+                location[:25] + '...' if len(location) > 25 else location,
+                budget_val,
+                risk_val,
+                status
+            ])
+        
+        scene_table = Table(scene_table_data, colWidths=[0.8*inch, 2*inch, 1.2*inch, 1*inch, 1*inch])
+        scene_table.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#1F4788')),
+            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+            ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+            ('FONTSIZE', (0, 0), (-1, -1), 8),
+            ('BOTTOMPADDING', (0, 0), (-1, -1), 6),
+            ('GRID', (0, 0), (-1, -1), 1, colors.grey),
+            ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.white, colors.lightgrey])
+        ]))
+        
+        elements.append(scene_table)
+        if len(scene_data_list) > 20:
+            elements.append(Paragraph(f"<i>Showing first 20 of {len(scene_data_list)} scenes. See dashboard for complete list.</i>", styles['Normal']))
+        
+        elements.append(Spacer(1, 0.3*inch))
+        
+        # ========== LOCATION INTELLIGENCE ==========
+        if insights:
+            elements.append(Paragraph("Location Intelligence", heading_style))
+            
+            location_insights = [i for i in insights if i.insight_type == "LOCATION_CHAIN"]
+            
+            if location_insights:
+                location_data = [["Location", "Scenes", "Recommendation"]]
+                for insight in location_insights[:5]:  # Top 5
+                    scene_ids = json.loads(insight.scene_ids) if isinstance(insight.scene_ids, str) else insight.scene_ids
+                    location_data.append([
+                        insight.problem_description[:30] + '...' if len(insight.problem_description) > 30 else insight.problem_description,
+                        str(len(scene_ids)),
+                        insight.recommendation[:40] + '...' if len(insight.recommendation) > 40 else insight.recommendation
+                    ])
+                
+                location_table = Table(location_data, colWidths=[2*inch, 1*inch, 3*inch])
+                location_table.setStyle(TableStyle([
+                    ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#7C3AED')),
+                    ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+                    ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+                    ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+                    ('FONTSIZE', (0, 0), (-1, -1), 9),
+                    ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
+                    ('GRID', (0, 0), (-1, -1), 1, colors.grey)
+                ]))
+                
+                elements.append(location_table)
+            else:
+                elements.append(Paragraph("No location clustering insights available.", styles['Normal']))
+            
+            elements.append(Spacer(1, 0.3*inch))
+        
+        # ========== PRODUCER RECOMMENDATIONS ==========
         elements.append(Paragraph("Producer Recommendations", heading_style))
         
-        recommendations = """
-        <b>1. Risk Mitigation:</b> Review high-risk scenes and implement recommended safety protocols. <br/><br/>
-        <b>2. Budget Planning:</b> Use provided budget ranges for contingency planning (typically 15-20% above likely estimate). <br/><br/>
-        <b>3. Schedule Optimization:</b> Consider identified location chains to minimize travel and setup time. <br/><br/>
-        <b>4. Crew Management:</b> Plan crew rotations to avoid fatigue clusters identified in cross-scene analysis. <br/><br/>
-        <b>5. What-If Analysis:</b> Use scenario planning tools to evaluate budget cuts, timeline acceleration, or safety enhancements. <br/>
-        """
+        recommendations_list = production_recommendations.get("recommendations", [])
+        if recommendations_list:
+            for idx, rec in enumerate(recommendations_list[:10], 1):  # Top 10
+                priority = rec.get("priority", "Medium")
+                recommendation = rec.get("recommendation", "")
+                impact = rec.get("budget_impact", "")
+                risk_reduction = rec.get("risk_reduction", "")
+                
+                rec_text = f"""
+                <b>{idx}. [{priority}]</b> {recommendation} <br/>
+                <i>Budget Impact: {impact} | Risk Reduction: {risk_reduction}</i>
+                """
+                elements.append(Paragraph(rec_text, styles['Normal']))
+                elements.append(Spacer(1, 0.15*inch))
+        else:
+            # Fallback generic recommendations
+            generic_recs = [
+                "Review high-risk scenes and implement recommended safety protocols.",
+                "Use provided budget ranges for contingency planning (typically 15-20% above likely estimate).",
+                "Consider identified location chains to minimize travel and setup time.",
+                "Plan crew rotations to avoid fatigue clusters identified in cross-scene analysis.",
+                "Use scenario planning tools to evaluate budget cuts, timeline acceleration, or safety enhancements."
+            ]
+            for idx, rec in enumerate(generic_recs, 1):
+                elements.append(Paragraph(f"{idx}. {rec}", styles['Normal']))
+                elements.append(Spacer(1, 0.1*inch))
         
-        elements.append(Paragraph(recommendations, styles['Normal']))
-        elements.append(Spacer(1, 0.5*inch))
+        elements.append(Spacer(1, 0.3*inch))
         
-        # Footer
+        # ========== FOOTER ==========
         footer_text = """
         <i>This report was generated by ShootSafe AI - an intelligent system for film production safety and budgeting.<br/>
         For detailed scene-by-scene analysis, risk breakdown, and budget details, please access the interactive dashboard.<br/>
@@ -240,7 +522,7 @@ async def generate_report(
         # Store in database
         report = Report(
             id=f"report-{run_id}",
-            project_id=run.project_id,
+            project_id=run_id,  # Use run_id as project_id (Run model doesn't have project_id)
             run_id=run_id,
             pdf_path=pdf_path,
             file_size=file_size

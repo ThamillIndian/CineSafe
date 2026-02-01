@@ -1,8 +1,10 @@
 import React from 'react';
 import ExportButton from '../components/ExportButton';
+import ReportsSection from './ReportsSection';
 import '../styles/components.css';
+import '../styles/reports.css';
 
-export default function ExecutiveReport({ data }) {
+export default function ExecutiveReport({ data, runId }) {
   const executive = data.LAYER_12_executive_summary || data.executive_summary || {};
   const metadata = data.analysis_metadata || {};
 
@@ -98,6 +100,9 @@ export default function ExecutiveReport({ data }) {
           <p className="roi-text">{metadata.optimization_summary || executive.roi_statement}</p>
         </section>
       </div>
+
+      {/* Reports Section */}
+      <ReportsSection data={data} runId={runId} />
     </div>
   );
 }

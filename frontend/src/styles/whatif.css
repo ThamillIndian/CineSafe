@@ -1,0 +1,592 @@
+/* What-If Analysis Page Styles */
+
+.whatif-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header */
+.whatif-header {
+  margin-bottom: 32px;
+}
+
+.whatif-header h1 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #1f4788;
+  margin-bottom: 8px;
+}
+
+.whatif-header p {
+  font-size: 16px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Tabs Navigation */
+.whatif-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0;
+}
+
+.whatif-tabs .tab {
+  padding: 12px 20px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  bottom: -2px;
+}
+
+.whatif-tabs .tab:hover {
+  color: #2e5c8a;
+  background: #f3f4f6;
+}
+
+.whatif-tabs .tab.active {
+  color: #2e5c8a;
+  border-bottom-color: #2e5c8a;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   REFERENCE DATA DASHBOARD
+   ═══════════════════════════════════════════════════════════════ */
+
+.reference-dashboard {
+  background: linear-gradient(135deg, #f8fafc 0%, #f0f4f8 100%);
+  border: 2px solid #d1d5db;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.reference-dashboard h3 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #1f4788;
+  margin: 0 0 16px 0;
+}
+
+.ref-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.ref-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.ref-card:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.ref-card.warning {
+  border-left: 4px solid #f59e0b;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+}
+
+.ref-card.success {
+  border-left: 4px solid #10b981;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+}
+
+.ref-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.ref-value {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  color: #1f4788;
+}
+.whatif-section {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.section-content {
+  padding: 32px;
+}
+
+.whatif-section h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #1f4788;
+  margin-bottom: 8px;
+}
+
+.whatif-section > .section-content > p {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PRESETS SECTION
+   ═══════════════════════════════════════════════════════════════ */
+
+.presets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.preset-card {
+  padding: 24px;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+  background: #fafbfc;
+  cursor: pointer;
+}
+
+.preset-card:hover {
+  border-color: #2e5c8a;
+  box-shadow: 0 4px 12px rgba(46, 92, 138, 0.15);
+  transform: translateY(-4px);
+}
+
+.preset-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.preset-card h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1f4788;
+  margin-bottom: 8px;
+}
+
+.preset-card p {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.btn-preset {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #2e5c8a 0%, #1f4788 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.btn-preset:hover:not(:disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(46, 92, 138, 0.3);
+}
+
+.btn-preset:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CUSTOM SCENARIO SECTION
+   ═══════════════════════════════════════════════════════════════ */
+
+.changes-list {
+  margin: 24px 0;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 20px;
+  background: #fafbfc;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.empty-state {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  font-size: 16px;
+}
+
+.change-item {
+  display: grid;
+  grid-template-columns: 40px 1fr 1fr 1fr 40px;
+  gap: 16px;
+  align-items: end;
+  padding: 16px;
+  background: white;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.change-item:last-child {
+  margin-bottom: 0;
+}
+
+.change-number {
+  font-weight: bold;
+  color: #2e5c8a;
+  font-size: 16px;
+  text-align: center;
+}
+
+.change-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.change-field label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+}
+
+.field-input {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #374151;
+  background: white;
+  transition: all 0.2s ease;
+}
+
+.field-input:focus {
+  outline: none;
+  border-color: #2e5c8a;
+  box-shadow: 0 0 0 3px rgba(46, 92, 138, 0.1);
+}
+
+.btn-remove {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: #fee2e2;
+  color: #dc2626;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.btn-remove:hover {
+  background: #fecaca;
+  transform: scale(1.1);
+}
+
+.changes-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESULTS SECTION
+   ═══════════════════════════════════════════════════════════════ */
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin: 24px 0;
+}
+
+.state-card {
+  padding: 24px;
+  border-radius: 10px;
+  border: 2px solid #e5e7eb;
+  background: white;
+}
+
+.state-card.original {
+  border-color: #9ca3af;
+  background: #f9fafb;
+}
+
+.state-card.delta {
+  border-color: #2e5c8a;
+  background: linear-gradient(135deg, #f0f4f8 0%, #e0eaf8 100%);
+}
+
+.state-card.revised {
+  border-color: #22c55e;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+}
+
+.state-card h3 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #1f4788;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.metric {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.metric:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.metric-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.metric-value {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  color: #1f4788;
+  margin-bottom: 4px;
+}
+
+.metric-detail {
+  display: block;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.metric.positive .metric-value {
+  color: #22c55e;
+}
+
+.metric.negative .metric-value {
+  color: #ef4444;
+}
+
+/* Recommendation Box */
+.recommendation-box {
+  padding: 20px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border-left: 4px solid #f59e0b;
+  border-radius: 8px;
+  margin: 24px 0;
+}
+
+.recommendation-box h3 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #92400e;
+  margin-bottom: 12px;
+  margin-top: 0;
+}
+
+.recommendation-box p {
+  font-size: 14px;
+  color: #78350f;
+  margin: 0 0 8px 0;
+  line-height: 1.6;
+}
+
+.recommendation-box .savings {
+  color: #059669;
+  font-weight: 600;
+}
+
+/* LLM Reasoning Box */
+.llm-reasoning {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid #059669;
+}
+
+.llm-reasoning h4 {
+  font-size: 14px;
+  font-weight: bold;
+  color: #166534;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.llm-reasoning p {
+  font-size: 13px;
+  color: #15803d;
+  line-height: 1.6;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Results Actions */
+.results-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   BUTTONS
+   ═══════════════════════════════════════════════════════════════ */
+
+.btn-primary,
+.btn-secondary {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #2e5c8a 0%, #1f4788 100%);
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(46, 92, 138, 0.3);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #d1d5db;
+  transform: translateY(-2px);
+}
+
+.spinner {
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .whatif-page {
+    padding: 16px;
+  }
+
+  .whatif-header h1 {
+    font-size: 24px;
+  }
+
+  .presets-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .change-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .btn-remove {
+    width: 100%;
+  }
+
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .whatif-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .whatif-tabs .tab {
+    font-size: 12px;
+    padding: 10px 16px;
+  }
+
+  .changes-actions {
+    flex-direction: column;
+  }
+
+  .btn-preset,
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+}

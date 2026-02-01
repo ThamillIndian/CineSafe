@@ -8,7 +8,8 @@ export default function Sidebar({ currentPage, onNavigate, isDataLoaded }) {
     { id: 'home', label: 'Home', icon: '🏠' },
     { id: 'analysis', label: 'Analysis', icon: '📊', locked: !isDataLoaded },
     { id: 'report', label: 'Executive Summary / Report', icon: '👑', locked: !isDataLoaded },
-    { id: 'scenedetail', label: 'Detailed Scene View', icon: '🎬', locked: !isDataLoaded },
+    { id: 'whatif', label: 'What-If Analysis', icon: '🎬', locked: !isDataLoaded },
+    { id: 'scenedetail', label: 'Detailed Scene View', icon: '🎥', locked: !isDataLoaded },
   ];
 
   const handleNavClick = (pageId) => {

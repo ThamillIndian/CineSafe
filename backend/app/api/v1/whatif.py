@@ -1,11 +1,12 @@
 """
-What-If Analysis API Router - Scenario simulation
+What-If Analysis API Router - Scenario simulation with LLM Intelligence
 """
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 import logging
 import copy
+import json
 from datetime import datetime
 
 from app.database import get_db
@@ -14,6 +15,20 @@ from app.models.schemas import WhatIfRequest, WhatIfResponse
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
+
+# Initialize LLM client - Use Qwen3 only
+llm_client = None
+
+try:
+    from app.utils.llm_client import Qwen3Client
+    from app.config import settings
+    llm_client = Qwen3Client(
+        base_url=settings.qwen3_base_url,
+        model=settings.qwen3_model
+    )
+    logger.info("✅ What-If API: Qwen3 client initialized for intelligent analysis")
+except Exception as e:
+    logger.warning(f"⚠️ What-If API: Qwen3 unavailable, using rule-based analysis: {e}")
 
 
 async def get_completed_run(run_id: str, session: AsyncSession):
@@ -72,8 +87,124 @@ def simulate_risk_change(old_extraction: dict, new_extraction: dict, old_risk: d
     return risk_delta
 
 
+async def simulate_risk_change_with_llm(
+    old_extraction: dict,
+    new_extraction: dict,
+    old_risk: dict,
+    changes: list
+) -> tuple[dict, str]:
+    """Use LLM to intelligently analyze risk impact of changes"""
+    
+    if not llm_client:
+        logger.info("LLM unavailable, using rule-based risk analysis")
+        return simulate_risk_change(old_extraction, new_extraction, old_risk), "Rule-based analysis"
+    
+    try:
+        # Fix: Properly handle Pydantic objects
+        change_descriptions = []
+        for change in changes:
+            # Handle Pydantic object - use dot notation or convert to dict
+            if hasattr(change, 'field'):
+                field = change.field
+                value = change.new_value if hasattr(change, 'new_value') else 'N/A'
+            elif isinstance(change, dict):
+                field = change.get('field', 'unknown')
+                value = change.get('new_value', 'N/A')
+            else:
+                # Try to convert Pydantic to dict
+                try:
+                    change_dict = change.dict() if hasattr(change, 'dict') else change.model_dump() if hasattr(change, 'model_dump') else {}
+                    field = change_dict.get('field', 'unknown')
+                    value = change_dict.get('new_value', 'N/A')
+                except:
+                    field = 'unknown'
+                    value = 'N/A'
+            change_descriptions.append(f"- {field}: {value}")
+        
+        prompt = f"""
+You are a film production risk analyst. Assess how these changes affect production risk.
+
+CURRENT RISK PROFILE:
+- Safety Score: {old_risk.get('safety_score', 0)}/30
+- Logistics Score: {old_risk.get('logistics_score', 0)}/30
+- Schedule Score: {old_risk.get('schedule_score', 0)}/30
+- Budget Score: {old_risk.get('budget_score', 0)}/30
+- Compliance Score: {old_risk.get('compliance_score', 0)}/30
+- Total: {old_risk.get('total_risk_score', 0)}/150
+
+SCENE CONTEXT (from Analysis Page):
+- Current Stunt Level: {old_extraction.get('stunt_level', {}).get('value') if isinstance(old_extraction.get('stunt_level'), dict) else old_extraction.get('stunt_level', 'low (default)')}
+- Current Talent Count: {old_extraction.get('talent_count', {}).get('value') if isinstance(old_extraction.get('talent_count'), dict) else old_extraction.get('talent_count', 'standard (default)')}
+- Current Location: {old_extraction.get('location', {}).get('value') if isinstance(old_extraction.get('location'), dict) else old_extraction.get('location', 'studio (default)')}
+
+PROPOSED CHANGES:
+{chr(10).join(change_descriptions)}
+
+Provide a JSON response with these EXACT fields (NO + signs, just plain numbers):
+{{
+    "safety_delta": <integer between -5 and 10, example: -2 or 3 not +3>,
+    "logistics_delta": <integer between -5 and 10>,
+    "schedule_delta": <integer between -5 and 10>,
+    "budget_delta": <integer between -5 and 10>,
+    "compliance_delta": <integer between -5 and 10>,
+    "reasoning": "<brief explanation that REFERENCES the scene context and changes>"
+}}
+
+Consider:
+- Higher stunt levels increase SAFETY risk
+- More crew increases LOGISTICS risk
+- Tight timelines increase SCHEDULE risk
+- Budget cuts increase BUDGET risk (cost cutting = corner cutting)
+- Remote locations increase COMPLIANCE risk
+"""
+        
+        # Fix: Use call_model() method (async for Qwen3)
+        response = await llm_client.call_model(prompt)
+        
+        # Fix: Extract JSON from response text with sanitization for + signs
+        try:
+            start = response.find('{')
+            end = response.rfind('}') + 1
+            if start >= 0 and end > start:
+                json_str = response[start:end]
+                # Fix: Remove + signs from numbers (convert "+10" to "10")
+                json_str = json_str.replace(': +', ': ')
+                analysis = json.loads(json_str)
+            else:
+                logger.warning("No JSON found in Qwen3 response, using fallback")
+                return simulate_risk_change(old_extraction, new_extraction, old_risk), "JSON parse error"
+        except json.JSONDecodeError as e:
+            logger.error(f"JSON decode error: {e}, response: {response[:200]}")
+            return simulate_risk_change(old_extraction, new_extraction, old_risk), "JSON parse error"
+        
+        # Apply LLM-calculated deltas
+        risk_delta = copy.deepcopy(old_risk)
+        risk_delta["safety_score"] = max(0, min(30, old_risk["safety_score"] + analysis.get("safety_delta", 0)))
+        risk_delta["logistics_score"] = max(0, min(30, old_risk["logistics_score"] + analysis.get("logistics_delta", 0)))
+        risk_delta["schedule_score"] = max(0, min(30, old_risk["schedule_score"] + analysis.get("schedule_delta", 0)))
+        risk_delta["budget_score"] = max(0, min(30, old_risk["budget_score"] + analysis.get("budget_delta", 0)))
+        risk_delta["compliance_score"] = max(0, min(30, old_risk["compliance_score"] + analysis.get("compliance_delta", 0)))
+        
+        risk_delta["total_risk_score"] = sum([
+            risk_delta["safety_score"],
+            risk_delta["logistics_score"],
+            risk_delta["schedule_score"],
+            risk_delta["budget_score"],
+            risk_delta["compliance_score"]
+        ])
+        
+        reasoning = analysis.get("reasoning", "AI analyzed risk impact of the proposed changes.")
+        logger.info(f"✅ Qwen3 Risk Analysis: {reasoning}")
+        
+        return risk_delta, reasoning
+        
+    except Exception as e:
+        logger.error(f"❌ Qwen3 risk analysis failed: {e}, falling back to rules")
+        return simulate_risk_change(old_extraction, new_extraction, old_risk), f"Analysis error: {str(e)}"
+
+
 def simulate_budget_change(old_extraction: dict, new_extraction: dict, old_budget: dict) -> dict:
-    """Simulate how budget changes based on scene modifications"""
+    """Simulate how budget changes based on scene modifications (rule-based fallback)"""
     
     budget_delta = copy.deepcopy(old_budget)
     
@@ -101,6 +232,104 @@ def simulate_budget_change(old_extraction: dict, new_extraction: dict, old_budge
         budget_delta["cost_max"] = max(0, budget_delta["cost_max"] + cost_delta * 1.2)
     
     return budget_delta
+
+
+async def simulate_budget_change_with_llm(
+    old_extraction: dict,
+    new_extraction: dict,
+    old_budget: dict,
+    old_risk: dict,
+    changes: list
+) -> tuple[dict, str]:
+    """Use LLM to intelligently analyze budget impact of changes"""
+    
+    if not llm_client:
+        logger.info("LLM unavailable, using rule-based analysis")
+        return simulate_budget_change(old_extraction, new_extraction, old_budget), "Rule-based analysis"
+    
+    try:
+        # Fix: Properly handle Pydantic objects
+        change_descriptions = []
+        for change in changes:
+            # Handle Pydantic object - use dot notation or convert to dict
+            if hasattr(change, 'field'):
+                field = change.field
+                value = change.new_value if hasattr(change, 'new_value') else 'N/A'
+            elif isinstance(change, dict):
+                field = change.get('field', 'unknown')
+                value = change.get('new_value', 'N/A')
+            else:
+                # Try to convert Pydantic to dict
+                try:
+                    change_dict = change.dict() if hasattr(change, 'dict') else change.model_dump() if hasattr(change, 'model_dump') else {}
+                    field = change_dict.get('field', 'unknown')
+                    value = change_dict.get('new_value', 'N/A')
+                except:
+                    field = 'unknown'
+                    value = 'N/A'
+            change_descriptions.append(f"- {field}: {value}")
+        
+        prompt = f"""
+You are a film production cost analyst. Analyze the budget impact of these production scenario changes.
+
+SCENE CONTEXT:
+- Stunt Level: {old_extraction.get('stunt_level', {}).get('value') if isinstance(old_extraction.get('stunt_level'), dict) else old_extraction.get('stunt_level', 'low (default)')}
+- Talent Count: {old_extraction.get('talent_count', {}).get('value') if isinstance(old_extraction.get('talent_count'), dict) else old_extraction.get('talent_count', 'standard (default)')}
+- Location: {old_extraction.get('location', {}).get('value') if isinstance(old_extraction.get('location'), dict) else old_extraction.get('location', 'studio (default)')}
+- Current Budget: ₹{old_budget.get('cost_likely', 0):,.0f} (likely), ₹{old_budget.get('cost_min', 0):,.0f} (min), ₹{old_budget.get('cost_max', 0):,.0f} (max)
+
+PROPOSED CHANGES:
+{chr(10).join(change_descriptions)}
+
+Provide a JSON response with these EXACT fields (plain numbers, NO + signs):
+{{
+    "cost_min_delta": <integer rupee change, negative for cuts>,
+    "cost_likely_delta": <integer rupee change>,
+    "cost_max_delta": <integer rupee change>,
+    "reasoning": "<brief explanation referencing the scene and changes>"
+}}
+
+Consider:
+- Talent increases: ₹1,500-3,000 per additional crew member
+- Stunt levels (low→extreme): ₹0 to ₹50,000 additional
+- Location changes: ₹10,000-50,000 for logistics
+- Safety measures: 10-30% increase per tier
+- Equipment upgrades: 5-20% per tier
+"""
+        
+        # Fix: Use call_model() method (async for Qwen3)
+        response = await llm_client.call_model(prompt)
+        
+        # Fix: Extract JSON from response text with sanitization for + signs
+        try:
+            start = response.find('{')
+            end = response.rfind('}') + 1
+            if start >= 0 and end > start:
+                json_str = response[start:end]
+                # Fix: Remove + signs from numbers (convert "+10" to "10")
+                json_str = json_str.replace(': +', ': ')
+                analysis = json.loads(json_str)
+            else:
+                logger.warning("No JSON found in Qwen3 response, using fallback")
+                return simulate_budget_change(old_extraction, new_extraction, old_budget), "JSON parse error"
+        except json.JSONDecodeError as e:
+            logger.error(f"JSON decode error: {e}, response: {response[:200]}")
+            return simulate_budget_change(old_extraction, new_extraction, old_budget), "JSON parse error"
+        
+        # Apply LLM-calculated deltas
+        budget_delta = copy.deepcopy(old_budget)
+        budget_delta["cost_min"] = max(0, old_budget["cost_min"] + int(analysis.get("cost_min_delta", 0)))
+        budget_delta["cost_likely"] = max(0, old_budget["cost_likely"] + int(analysis.get("cost_likely_delta", 0)))
+        budget_delta["cost_max"] = max(0, old_budget["cost_max"] + int(analysis.get("cost_max_delta", 0)))
+        
+        reasoning = analysis.get("reasoning", "AI analyzed the impact of changes on production costs.")
+        logger.info(f"✅ Qwen3 Budget Analysis: {reasoning}")
+        
+        return budget_delta, reasoning
+        
+    except Exception as e:
+        logger.error(f"❌ Qwen3 budget analysis failed: {e}, falling back to rules")
+        return simulate_budget_change(old_extraction, new_extraction, old_budget), f"Analysis error: {str(e)}"
 
 
 # ============== RUN WHAT-IF SCENARIO ==============
@@ -177,8 +406,15 @@ async def run_whatif_analysis(
             )
             cost = cost_result.scalars().first()
             
+            extraction_data = extraction.extraction_json if extraction else {}
+            
+            # DEBUG: Log what extraction we got
+            logger.info(f"🔍 Scene {scene.id} extraction_data keys: {list(extraction_data.keys()) if extraction_data else 'EMPTY'}")
+            if extraction_data:
+                logger.info(f"   Sample extraction: stunt_level={extraction_data.get('stunt_level')}, talent_count={extraction_data.get('talent_count')}, location={extraction_data.get('location')}")
+            
             old_state[scene.id] = {
-                "extraction": extraction.extraction_json if extraction else {},
+                "extraction": extraction_data,
                 "risk": {
                     "safety_score": risk.safety_score if risk else 0,
                     "logistics_score": risk.logistics_score if risk else 0,
@@ -223,8 +459,13 @@ async def run_whatif_analysis(
             old_risk = old_state[scene_id]["risk"]
             old_budget = old_state[scene_id]["budget"]
             
-            new_state[scene_id]["risk"] = simulate_risk_change(old_ext, new_ext, old_risk)
-            new_state[scene_id]["budget"] = simulate_budget_change(old_ext, new_ext, old_budget)
+            # Use LLM for intelligent analysis if available
+            new_state[scene_id]["risk"], _ = await simulate_risk_change_with_llm(
+                old_ext, new_ext, old_risk, request.changes
+            )
+            new_state[scene_id]["budget"], _ = await simulate_budget_change_with_llm(
+                old_ext, new_ext, old_budget, old_risk, request.changes
+            )
         
         # Calculate deltas
         total_new_cost_likely = sum([s["budget"]["cost_likely"] for s in new_state.values()])
@@ -232,21 +473,52 @@ async def run_whatif_analysis(
         
         cost_delta = total_new_cost_likely - total_old_cost_likely
         
-        # Average risk delta per scene
-        risk_delta = [
-            (new_state[scene_id]["risk"]["safety_score"] - old_state[scene_id]["risk"]["safety_score"]),
-            (new_state[scene_id]["risk"]["logistics_score"] - old_state[scene_id]["risk"]["logistics_score"]),
-            (new_state[scene_id]["risk"]["schedule_score"] - old_state[scene_id]["risk"]["schedule_score"]),
-            (new_state[scene_id]["risk"]["budget_score"] - old_state[scene_id]["risk"]["budget_score"]),
-            (new_state[scene_id]["risk"]["compliance_score"] - old_state[scene_id]["risk"]["compliance_score"])
-        ]
+        # Fix: Calculate aggregated risk deltas across ALL scenes, not just one
+        # This prevents "scene_id not defined" error and correctly aggregates all changes
+        safety_delta = sum(
+            new_state[sid]["risk"]["safety_score"] - old_state[sid]["risk"]["safety_score"]
+            for sid in new_state.keys()
+        )
+        logistics_delta = sum(
+            new_state[sid]["risk"]["logistics_score"] - old_state[sid]["risk"]["logistics_score"]
+            for sid in new_state.keys()
+        )
+        schedule_delta = sum(
+            new_state[sid]["risk"]["schedule_score"] - old_state[sid]["risk"]["schedule_score"]
+            for sid in new_state.keys()
+        )
+        budget_delta = sum(
+            new_state[sid]["risk"]["budget_score"] - old_state[sid]["risk"]["budget_score"]
+            for sid in new_state.keys()
+        )
+        compliance_delta = sum(
+            new_state[sid]["risk"]["compliance_score"] - old_state[sid]["risk"]["compliance_score"]
+            for sid in new_state.keys()
+        )
+        
+        # Return as array for compatibility
+        risk_delta = [safety_delta, logistics_delta, schedule_delta, budget_delta, compliance_delta]
         
         # Feasibility score (simplified)
         old_feasibility = 1.0 - (total_old_risk_score / (150 * len(scenes))) if scenes else 1.0
         new_feasibility = 1.0 - (total_new_risk_score / (150 * len(scenes))) if scenes else 1.0
         feasibility_delta = new_feasibility - old_feasibility
         
-        logger.info(f"✅ What-if analysis completed: cost_delta=${cost_delta}, risk_delta={risk_delta}")
+        # Generate overall LLM reasoning
+        llm_reasoning = "Analysis complete"
+        if llm_client:
+            try:
+                reasoning_prompt = f"""Summarize the impact of this production change:
+- Budget change: ₹{cost_delta:,.0f}
+- Risk change: {sum(risk_delta):.1f} points
+- Feasibility change: {feasibility_delta*100:.1f}%
+Provide a 1-2 sentence executive summary."""
+                # Fix: Use call_model() method (async for Qwen3)
+                llm_reasoning = await llm_client.call_model(reasoning_prompt)
+            except Exception as e:
+                logger.warning(f"Could not generate overall reasoning: {e}")
+        
+        logger.info(f"✅ What-if analysis completed: cost_delta=₹{cost_delta:,.0f}, risk_delta={sum(risk_delta):.1f}")
         
         return WhatIfResponse(
             old_state={
@@ -261,10 +533,11 @@ async def run_whatif_analysis(
             },
             deltas={
                 "cost_delta": int(cost_delta),
-                "schedule_delta": 0.0,  # Would be calculated from schedule changes
+                "schedule_delta": 0.0,
                 "risk_delta": risk_delta,
                 "feasibility_delta": feasibility_delta,
-                "affected_insights": []  # Would list affected insights
+                "llm_reasoning": llm_reasoning,  # NEW: Add LLM reasoning
+                "affected_insights": []
             },
             feasibility_changed=feasibility_delta != 0
         )
@@ -328,17 +601,16 @@ async def run_preset_scenario(
     session: AsyncSession = Depends(get_db)
 ):
     """
-    Run a preset what-if scenario
+    Run a preset what-if scenario with intelligent targeting
     
     **Args:**
     - run_id: UUID of the run
     - preset_name: One of: budget_cut_20, accelerate_timeline, max_safety
     
-    **Presets:**
-    - `budget_cut_20`: Reduce budget by 20% across all scenes
-    - `accelerate_timeline`: Compress 20% of schedule
-    - `max_safety`: Increase all safety measures
-    - `split_crews`: Add parallel crew for stunt scenes
+    **Presets (INTELLIGENT - Data-Driven):**
+    - `budget_cut_20`: Reduce budget by targeting top 1/3 most expensive scenes (reduces stunt levels)
+    - `accelerate_timeline`: Compress timeline by parallelizing low-risk scenes (adds crew for parallelization)
+    - `max_safety`: Maximize safety by reducing stunts in high-risk scenes (risk > 65 threshold)
     """
     try:
         run = await get_completed_run(run_id, session)
@@ -349,48 +621,114 @@ async def run_preset_scenario(
         )
         scenes = scenes_result.scalars().all()
         
-        # Define presets
-        preset_scenarios = {
-            "budget_cut_20": {
-                "description": "Reduce budget by 20%",
-                "changes": [
-                    {
-                        "scene_id": s.id,
-                        "field": "cost_multiplier",
-                        "new_value": 0.8
-                    }
-                    for s in scenes
-                ]
-            },
-            "accelerate_timeline": {
-                "description": "Compress 20% of shooting days",
-                "changes": []
-            },
-            "max_safety": {
-                "description": "Maximize safety measures",
-                "changes": [
-                    {
-                        "scene_id": s.id,
-                        "field": "safety_tier",
-                        "new_value": "maximum"
-                    }
-                    for s in scenes if "water" in (s.location or "").lower() or "stunt" in (s.heading or "").lower()
-                ]
-            }
-        }
+        # Build smart preset based on actual data
+        changes = []
         
-        if preset_name not in preset_scenarios:
+        if preset_name == "budget_cut_20":
+            # Fetch costs for all scenes
+            scene_costs = {}
+            for scene in scenes:
+                cost_result = await session.execute(
+                    select(SceneCost).where(SceneCost.scene_id == scene.id)
+                )
+                cost = cost_result.scalars().first()
+                cost_value = cost.cost_likely if cost else 0
+                scene_costs[scene.id] = cost_value
+                logger.debug(f"Scene {scene.scene_number}: cost = {cost_value}")
+            
+            logger.info(f"💰 Scene costs collected: {len(scene_costs)} scenes, costs: {list(scene_costs.values())[:5]}")
+            
+            # Sort by cost and take top 30% of scenes (most expensive)
+            sorted_scenes = sorted(scene_costs.items(), key=lambda x: x[1], reverse=True)
+            num_to_modify = max(1, len(scenes) // 3)  # Modify top 1/3 most expensive
+            expensive_scene_ids = [s[0] for s in sorted_scenes[:num_to_modify]]
+            
+            logger.info(f"💰 Budget Cut Preset: Targeting {num_to_modify} most expensive scenes: {len(expensive_scene_ids)} selected")
+            logger.info(f"💰 Expensive scene IDs: {expensive_scene_ids}")
+            
+            for scene in scenes:
+                if scene.id in expensive_scene_ids:
+                    # For expensive scenes, reduce stunt level to save money
+                    logger.info(f"✅ Adding change for scene {scene.scene_number} (ID: {scene.id})")
+                    changes.append({
+                        "scene_id": str(scene.id),
+                        "field": "stunt_level",
+                        "new_value": "low"  # ✅ REAL FIELD
+                    })
+            
+            logger.info(f"💰 Total changes created: {len(changes)}")
+        
+        elif preset_name == "accelerate_timeline":
+            # Fetch risks for scenes
+            scene_risks = {}
+            for scene in scenes:
+                risk_result = await session.execute(
+                    select(SceneRisk).where(SceneRisk.scene_id == scene.id)
+                )
+                risk = risk_result.scalars().first()
+                risk_value = risk.total_risk_score if risk else 0
+                scene_risks[scene.id] = risk_value
+                logger.debug(f"Scene {scene.scene_number}: risk = {risk_value}")
+            
+            # Target LOW-RISK scenes for parallelization (safer to speed up)
+            low_risk_scenes = [s.id for s in scenes if scene_risks.get(s.id, 0) < 50]
+            num_to_modify = max(1, len(low_risk_scenes) // 2)  # Modify half of low-risk scenes
+            
+            logger.info(f"⚡ Accelerate Preset: Found {len(low_risk_scenes)} low-risk scenes, targeting {num_to_modify}")
+            
+            for scene_id in low_risk_scenes[:num_to_modify]:
+                # Add extra crew for parallelization
+                logger.info(f"✅ Adding change for low-risk scene {scene_id}")
+                changes.append({
+                    "scene_id": str(scene_id),
+                    "field": "talent_count",
+                    "new_value": 25  # ✅ REAL FIELD - more crew for parallel work
+                })
+            
+            logger.info(f"⚡ Total changes created: {len(changes)}")
+        
+        elif preset_name == "max_safety":
+            # Fetch risks for scenes
+            high_risk_count = 0
+            for scene in scenes:
+                risk_result = await session.execute(
+                    select(SceneRisk).where(SceneRisk.scene_id == scene.id)
+                )
+                risk = risk_result.scalars().first()
+                
+                if risk and risk.total_risk_score > 65:  # HIGH RISK threshold
+                    # Increase safety by reducing stunt level on high-risk scenes
+                    logger.info(f"✅ Adding safety change for high-risk scene {scene.scene_number} (risk: {risk.total_risk_score})")
+                    changes.append({
+                        "scene_id": str(scene.id),
+                        "field": "stunt_level",
+                        "new_value": "low"  # ✅ REAL FIELD - safer stunts
+                    })
+                    high_risk_count += 1
+            
+            logger.info(f"🛡️ Max Safety Preset: Targeting {high_risk_count} high-risk scenes (risk > 65)")
+            logger.info(f"🛡️ Total changes created: {len(changes)}")
+        
+        else:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
-                detail=f"Unknown preset: {preset_name}. Available: {list(preset_scenarios.keys())}"
+                detail=f"Unknown preset: {preset_name}. Available: budget_cut_20, accelerate_timeline, max_safety"
             )
         
-        preset = preset_scenarios[preset_name]
+        if not changes:
+            logger.warning(f"⚠️ {preset_name} resulted in no changes (no qualifying scenes)")
+            return WhatIfResponse(
+                old_state={"total_cost": 0, "total_risk": 0, "feasibility_score": 0},
+                new_state={"total_cost": 0, "total_risk": 0, "feasibility_score": 0},
+                deltas={"cost_delta": 0, "schedule_delta": 0, "risk_delta": [0,0,0,0,0], "total_risk_delta": 0, "feasibility_delta": 0, "affected_insights": []},
+                feasibility_changed=False,
+                llm_reasoning=f"No scenes qualified for {preset_name}"
+            )
         
         # Run as what-if
-        whatif_request = WhatIfRequest(changes=preset["changes"])
+        whatif_request = WhatIfRequest(changes=changes)
         
-        logger.info(f"✅ Preset scenario executed: {preset_name}")
+        logger.info(f"✅ {preset_name} preset generated {len(changes)} targeted changes")
         
         return await run_whatif_analysis(run_id, whatif_request, session)
         

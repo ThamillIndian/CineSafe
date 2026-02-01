@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Analysis from './pages/Analysis';
 import ExecutiveReport from './pages/ExecutiveReport';
 import DetailedSceneView from './pages/DetailedSceneView';
+import WhatIfAnalysis from './pages/WhatIfAnalysis';
 import ProgressOverlay from './components/ProgressOverlay';
 import { useAnalysisData } from './hooks/useAnalysisData';
 import { fetchAnalysisResult } from './services/api';
@@ -129,8 +130,12 @@ export default function App() {
           />
         )}
         
-        {currentPage === 'report' && isDataLoaded && (
-          <ExecutiveReport data={data} />
+            {currentPage === 'report' && isDataLoaded && (
+              <ExecutiveReport data={data} runId={runId} />
+            )}
+        
+        {currentPage === 'whatif' && isDataLoaded && (
+          <WhatIfAnalysis data={data} runId={runId} />
         )}
         
         {currentPage === 'scenedetail' && selectedScene && (
