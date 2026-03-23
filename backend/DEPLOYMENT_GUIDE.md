@@ -42,7 +42,7 @@ INFO: Application startup complete
 
 ```bash
 cd "E:\cine hackathon\project"
-python test_full_ai.py
+python scripts/test_full_ai.py
 ```
 
 **What it does:**
@@ -133,9 +133,9 @@ Run with multiple scripts:
 ```bash
 # Test with different film scripts
 # Each tests all 5 agents independently
-python test_full_ai.py
-python test_full_ai.py  # Run again
-python test_full_ai.py  # And again
+python scripts/test_full_ai.py
+python scripts/test_full_ai.py  # Run again
+python scripts/test_full_ai.py  # And again
 ```
 
 Expected: Consistent results, no crashes
@@ -176,7 +176,7 @@ Expected: Consistent results, no crashes
 | Command | Purpose |
 |---------|---------|
 | `python -m uvicorn app.main:app --reload` | Start server |
-| `python test_full_ai.py` | Test full pipeline |
+| `python scripts/test_full_ai.py` | Test full pipeline |
 | `curl http://127.0.0.1:8000/docs` | Open Swagger UI |
 | `curl http://127.0.0.1:8000/health` | Check server status |
 

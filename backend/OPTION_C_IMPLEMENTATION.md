@@ -184,7 +184,7 @@
 
 ### Test Script
 ```bash
-python test_full_ai.py
+python scripts/test_full_ai.py
 ```
 
 ### Expected Output

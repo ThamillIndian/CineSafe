@@ -60,6 +60,7 @@ SQLite Database (Results Storage)
 ## 📁 Project Structure
 
 ```
+scripts/                    # Optional manual tests (e.g. full pipeline dry run)
 backend/
 ├── app/
 │   ├── api/v1/              # FastAPI endpoints
