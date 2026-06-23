@@ -2,6 +2,10 @@
 
 An intelligent, multi-agent system that analyzes film scripts for production risks, budgets, and logistics using **CrewAI orchestration with MCP (Model Context Protocol) server** for standardized tool access and hierarchical agent coordination.
 
+## 🎥 Demo Video
+
+Watch the full walkthrough on YouTube: [CineSafe AI Demo](https://www.youtube.com/watch?v=c98MjWDmYco&t=318s)
+
 ## 🌟 Key Features
 
 ### **End-to-End Workflow**
